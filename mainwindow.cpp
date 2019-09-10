@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    serial = new QSerialPort(this);
     serial_port_setup();
 
     _100_msec_timer = new QTimer(this);
@@ -14,9 +15,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(_100_msec_timer, SIGNAL(timeout()),this,SLOT(serial_request_sender()));
 
     read_timer = new QTimer(this);
-    read_timer->setInterval(15);
+    read_timer->setInterval(30);
     read_timer->start();
     connect(read_timer, SIGNAL(timeout()),this,SLOT(serial_response_handler()));
+
+    //connect(serial,SIGNAL(readyRead()),this,SLOT(serial_response_handler()));
 
     initilize_plot();
 

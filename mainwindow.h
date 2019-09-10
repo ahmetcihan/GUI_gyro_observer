@@ -33,7 +33,7 @@ public:
     void initilize_plot(void);
     void plot_graph(void);
 
-    QSerialPort serial;
+    QSerialPort *serial;
     QTimer *_100_msec_timer;
     QTimer *read_timer;
     QCustomPlot *customPlot_gyro_x;
