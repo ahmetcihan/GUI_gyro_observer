@@ -16,12 +16,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     serial.cpp \
     plot.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    graphs.cpp
 
 HEADERS  += mainwindow.h \
-    qcustomplot.h
+    qcustomplot.h \
+    graphs.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    graphs.ui
 
 RESOURCES += \
     resource.qrc

@@ -9,23 +9,24 @@
 #include <QElapsedTimer>
 #include <QProcess>
 #include <qcustomplot.h>
+#include "ui_mainwindow.h"
+#include "graphs.h"
 
 typedef char s8;
 typedef unsigned char u8;
 typedef unsigned int u32;
 typedef signed int s32;
 
-namespace Ui {
-class MainWindow;
-}
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    Ui::MainWindow *ui;
+
+    graphs *graph_page;
 
     void EOL(char *base_array, u8 i);
     void serial_port_setup(void);
@@ -52,13 +53,10 @@ public:
     int MAG_x,MAG_y,MAG_z;
 
 public slots:
-    void get_zero(void);
-    void get_cal(void);
     void serial_request_sender(void);
     void serial_response_handler(void);
 
 private:
-    Ui::MainWindow *ui;
 
 };
 
