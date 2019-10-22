@@ -20,7 +20,7 @@
    <string>Laser Pointer</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 0);</string>
+   <string notr="true"/>
   </property>
   <property name="animated">
    <bool>false</bool>
@@ -31,7 +31,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -56,7 +56,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -66,7 +66,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      <rect>
       <x>10</x>
       <y>250</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -91,7 +91,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      <rect>
       <x>10</x>
       <y>280</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -101,7 +101,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      <rect>
       <x>10</x>
       <y>490</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -126,7 +126,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      <rect>
       <x>10</x>
       <y>520</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -134,9 +134,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QLabel" name="label_acc_x">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>220</x>
       <y>10</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -159,9 +159,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QLabel" name="label_acc_z">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>220</x>
       <y>490</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -184,9 +184,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QWidget" name="plot_acc_z" native="true">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>220</x>
       <y>520</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -194,9 +194,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QWidget" name="plot_acc_x" native="true">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>220</x>
       <y>40</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -204,9 +204,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QLabel" name="label_acc_y">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>220</x>
       <y>250</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -229,9 +229,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QWidget" name="plot_acc_y" native="true">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>220</x>
       <y>280</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -239,9 +239,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QLabel" name="label_mag_y">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>430</x>
       <y>250</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -264,9 +264,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QWidget" name="plot_mag_z" native="true">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>430</x>
       <y>520</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -274,9 +274,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QLabel" name="label_mag_x">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>430</x>
       <y>10</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -299,9 +299,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QWidget" name="plot_mag_y" native="true">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>430</x>
       <y>280</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -309,9 +309,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QWidget" name="plot_mag_x" native="true">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>430</x>
       <y>40</y>
-      <width>400</width>
+      <width>200</width>
       <height>200</height>
      </rect>
     </property>
@@ -319,9 +319,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
    <widget class="QLabel" name="label_mag_z">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>430</x>
       <y>490</y>
-      <width>400</width>
+      <width>200</width>
       <height>30</height>
      </rect>
     </property>
@@ -339,6 +339,618 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_get_zero">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>10</y>
+      <width>171</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Get ZERO</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_gyro_x_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>100</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>100</y>
+      <width>60</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>GYRO</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_gyro_y_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>140</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_gyro_z_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>180</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_acc_y_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>260</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>220</y>
+      <width>60</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>ACC</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_acc_x_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>220</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_acc_z_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>300</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_mag_y_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>380</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>340</y>
+      <width>60</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>MAG</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_mag_z_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>420</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_mag_x_zero">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>340</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>340</y>
+      <width>60</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>MAG</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_acc_y_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>260</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_get_cal">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>10</y>
+      <width>171</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Get CAL</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_mag_x_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>340</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_gyro_y_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>140</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>100</y>
+      <width>60</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>GYRO</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_mag_y_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>380</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_gyro_x_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>100</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>220</y>
+      <width>60</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>ACC</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_acc_z_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>300</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_gyro_z_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>180</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_mag_z_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>420</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_acc_x_cal">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>220</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="minimum">
+     <double>-999999.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>999999.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_get_cal_2">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>10</y>
+      <width>171</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>CALIBRATE</string>
     </property>
    </widget>
   </widget>

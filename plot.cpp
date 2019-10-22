@@ -32,31 +32,31 @@ void MainWindow::initilize_plot(void){
     customPlot_mag_y->setGeometry(0,0,ui->plot_mag_y->width(),ui->plot_mag_y->height());
     customPlot_mag_z->setGeometry(0,0,ui->plot_mag_z->width(),ui->plot_mag_z->height());
     // give the axes some labels:
-    customPlot_gyro_x->yAxis->setLabel("X AXIS");
+    //customPlot_gyro_x->yAxis->setLabel("X AXIS");
     customPlot_gyro_x->xAxis->setLabel("TIME (s)");
 
-    customPlot_gyro_y->yAxis->setLabel("Y AXIS");
+    //customPlot_gyro_y->yAxis->setLabel("Y AXIS");
     customPlot_gyro_y->xAxis->setLabel("TIME (s)");
 
-    customPlot_gyro_z->yAxis->setLabel("Z AXIS");
+    //customPlot_gyro_z->yAxis->setLabel("Z AXIS");
     customPlot_gyro_z->xAxis->setLabel("TIME (s)");
 
-    customPlot_acc_x->yAxis->setLabel("X AXIS");
+    //customPlot_acc_x->yAxis->setLabel("X AXIS");
     customPlot_acc_x->xAxis->setLabel("TIME (s)");
 
-    customPlot_acc_y->yAxis->setLabel("Y AXIS");
+    //customPlot_acc_y->yAxis->setLabel("Y AXIS");
     customPlot_acc_y->xAxis->setLabel("TIME (s)");
 
-    customPlot_acc_z->yAxis->setLabel("Z AXIS");
+    //customPlot_acc_z->yAxis->setLabel("Z AXIS");
     customPlot_acc_z->xAxis->setLabel("TIME (s)");
 
-    customPlot_mag_x->yAxis->setLabel("X AXIS");
+    //customPlot_mag_x->yAxis->setLabel("X AXIS");
     customPlot_mag_x->xAxis->setLabel("TIME (s)");
 
-    customPlot_mag_y->yAxis->setLabel("Y AXIS");
+    //customPlot_mag_y->yAxis->setLabel("Y AXIS");
     customPlot_mag_y->xAxis->setLabel("TIME (s)");
 
-    customPlot_mag_z->yAxis->setLabel("Z AXIS");
+    //customPlot_mag_z->yAxis->setLabel("Z AXIS");
     customPlot_mag_z->xAxis->setLabel("TIME (s)");
 }
 void MainWindow::plot_graph(void){

@@ -52,11 +52,14 @@ public:
     int MAG_x,MAG_y,MAG_z;
 
 public slots:
+    void get_zero(void);
+    void get_cal(void);
     void serial_request_sender(void);
     void serial_response_handler(void);
 
 private:
     Ui::MainWindow *ui;
+
 };
 
 #endif // MAINWINDOW_H
