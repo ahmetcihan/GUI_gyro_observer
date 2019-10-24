@@ -15,14 +15,18 @@ class graphs : public QWidget
 public:
     explicit graphs(MainWindow *master, QWidget *parent = 0);
     ~graphs();
+    Ui::graphs *ui;
+
+    double slope[9];
+    double calibrated[9];
 
 public slots:
     void get_zero(void);
     void get_cal(void);
+    void calibrate();
 
 private:
-    Ui::graphs *ui;
-    MainWindow *mainwin;
+    MainWindow *mainwindow;
 };
 
 #endif // GRAPHS_H

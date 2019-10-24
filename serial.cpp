@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ui_graphs.h"
 
 u32 MainWindow::crc_chk(u8* data, u8 length){
     int j;
@@ -42,8 +43,8 @@ void MainWindow::serial_response_handler(void){
             MAG_x = (u8)data_array[17] + 256*(u8)data_array[18];
             MAG_y = (u8)data_array[19] + 256*(u8)data_array[20];
             MAG_z = (u8)data_array[21] + 256*(u8)data_array[22];
-            //status = (u8)data_array[9];
-            qDebug() << "GYRO status :" << QString::number((u8)data_array[9],2) << "ACC status :" << QString::number((u8)data_array[16],2)<< "MAG status :" << QString::number((u8)data_array[23],2);
+//            status = (u8)data_array[9];
+//            qDebug() << "GYRO status :" << QString::number((u8)data_array[9],2) << "ACC status :" << QString::number((u8)data_array[16],2)<< "MAG status :" << QString::number((u8)data_array[23],2);
 //            if((u8) data_array[23] == 0 ){
 //                qDebug() << "MAG status : 0";
 //            }
@@ -79,8 +80,6 @@ void MainWindow::serial_response_handler(void){
                 GYRO_z = GYRO_z - 0x10000;
             }
 
-            //qDebug() << "X : " << MAG_x << "Y : " << MAG_y<< "Z : " << MAG_z;
-
             ui->label_gyro_x->setText("GYRO X : " + QString::number(GYRO_x));
             ui->label_gyro_y->setText("GYRO Y : " + QString::number(GYRO_y));
             ui->label_gyro_z->setText("GYRO Z : " + QString::number(GYRO_z));
@@ -90,6 +89,30 @@ void MainWindow::serial_response_handler(void){
             ui->label_mag_x->setText("MAG X : " + QString::number(MAG_x));
             ui->label_mag_y->setText("MAG Y : " + QString::number(MAG_y));
             ui->label_mag_z->setText("MAG Z : " + QString::number(MAG_z));
+
+            graph_page->calibrated[0] = (double) (GYRO_x - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
+            graph_page->calibrated[1] = (double) (GYRO_y - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];
+            graph_page->calibrated[2] = (double) (GYRO_z - graph_page->ui->doubleSpinBox_gyro_z_zero->value()) * graph_page->slope[2];
+            graph_page->calibrated[3] = (double) (ACC_x - graph_page->ui->doubleSpinBox_acc_x_zero->value()) * graph_page->slope[3];
+            graph_page->calibrated[4] = (double) (ACC_y - graph_page->ui->doubleSpinBox_acc_y_zero->value()) * graph_page->slope[4];
+            graph_page->calibrated[5] = (double) (ACC_z - graph_page->ui->doubleSpinBox_acc_z_zero->value()) * graph_page->slope[5];
+            graph_page->calibrated[6] = (double) (MAG_x - graph_page->ui->doubleSpinBox_mag_x_zero->value()) * graph_page->slope[6];
+            graph_page->calibrated[7] = (double) (MAG_y - graph_page->ui->doubleSpinBox_mag_y_zero->value()) * graph_page->slope[7];
+            graph_page->calibrated[8] = (double) (MAG_z - graph_page->ui->doubleSpinBox_mag_z_zero->value()) * graph_page->slope[8];
+
+            graph_page->ui->label_calibrated_gyro_x->setText(QString::number(graph_page->calibrated[0]));
+            graph_page->ui->label_calibrated_gyro_y->setText(QString::number(graph_page->calibrated[1]));
+            graph_page->ui->label_calibrated_gyro_z->setText(QString::number(graph_page->calibrated[2]));
+            graph_page->ui->label_calibrated_acc_x->setText(QString::number(graph_page->calibrated[3]));
+            graph_page->ui->label_calibrated_acc_y->setText(QString::number(graph_page->calibrated[4]));
+            graph_page->ui->label_calibrated_acc_z->setText(QString::number(graph_page->calibrated[5]));
+            graph_page->ui->label_calibrated_mag_x->setText(QString::number(graph_page->calibrated[6]));
+            graph_page->ui->label_calibrated_mag_y->setText(QString::number(graph_page->calibrated[7]));
+            graph_page->ui->label_calibrated_mag_z->setText(QString::number(graph_page->calibrated[8]));
+
+            filtered_ACC_x = filter_x(ACC_x, X_ax_0, X_ax_1, X_by_0, X_by_1, X_by_2,X_xv,X_yv);
+            filtered_ACC_y = filter_y(ACC_y, Y_ax_0, Y_ax_1, Y_by_0, Y_by_1, Y_by_2,Y_xv,Y_yv);
+            filtered_ACC_z = filter_z(ACC_z, Z_ax_0, Z_ax_1, Z_by_0, Z_by_1, Z_by_2,Z_xv,Z_yv);
             plot_graph();
         }
     }

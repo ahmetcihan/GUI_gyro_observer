@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     serial.cpp \
     plot.cpp \
     qcustomplot.cpp \
-    graphs.cpp
+    graphs.cpp \
+    filters.cpp
 
 HEADERS  += mainwindow.h \
     qcustomplot.h \
