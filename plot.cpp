@@ -30,6 +30,25 @@ void MainWindow::initilize_plot(void){
     customPlot_filtered_acc_y->addGraph();
     customPlot_filtered_acc_z->addGraph();
 
+    customPlot_acc_x->addGraph();
+    customPlot_acc_y->addGraph();
+    customPlot_acc_z->addGraph();
+
+    customPlot_acc_x->graph(0)->setPen(QPen(Qt::blue));
+    customPlot_acc_y->graph(0)->setPen(QPen(Qt::blue));
+    customPlot_acc_z->graph(0)->setPen(QPen(Qt::blue));
+    customPlot_acc_x->graph(1)->setPen(QPen(Qt::red));
+    customPlot_acc_y->graph(1)->setPen(QPen(Qt::red));
+    customPlot_acc_z->graph(1)->setPen(QPen(Qt::red));
+
+    customPlot_acc_x->graph(1)->setLineStyle(QCPGraph::lsLine);
+    customPlot_acc_y->graph(1)->setLineStyle(QCPGraph::lsLine);
+    customPlot_acc_z->graph(1)->setLineStyle(QCPGraph::lsLine);
+    customPlot_acc_x->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+    customPlot_acc_y->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+    customPlot_acc_z->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+
+
     customPlot_gyro_x->setGeometry(0,0,ui->plot_gyro_x->width(),ui->plot_gyro_x->height());
     customPlot_gyro_y->setGeometry(0,0,ui->plot_gyro_y->width(),ui->plot_gyro_y->height());
     customPlot_gyro_z->setGeometry(0,0,ui->plot_gyro_z->width(),ui->plot_gyro_z->height());
@@ -142,6 +161,10 @@ void MainWindow::plot_graph(void){
     customPlot_filtered_acc_x->graph(0)->addData(FAX.x,FAX.y);
     customPlot_filtered_acc_y->graph(0)->addData(FAY.x,FAY.y);
     customPlot_filtered_acc_z->graph(0)->addData(FAZ.x,FAZ.y);
+
+    customPlot_acc_x->graph(1)->addData(FAX.x,FAX.y);
+    customPlot_acc_y->graph(1)->addData(FAY.x,FAY.y);
+    customPlot_acc_z->graph(1)->addData(FAZ.x,FAZ.y);
     counter++;
 
     customPlot_gyro_x->graph(0)->rescaleValueAxis(false,true);

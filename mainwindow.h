@@ -43,6 +43,7 @@ public:
     QSerialPort *serial;
     QTimer *_100_msec_timer;
     QTimer *read_timer;
+
     QCustomPlot *customPlot_gyro_x;
     QCustomPlot *customPlot_gyro_y;
     QCustomPlot *customPlot_gyro_z;

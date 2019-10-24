@@ -22,9 +22,9 @@ void graphs::get_zero(void){
     ui->doubleSpinBox_gyro_x_zero->setValue(mainwindow->GYRO_x);
     ui->doubleSpinBox_gyro_y_zero->setValue(mainwindow->GYRO_y);
     ui->doubleSpinBox_gyro_z_zero->setValue(mainwindow->GYRO_z);
-    ui->doubleSpinBox_acc_x_zero->setValue(mainwindow->ACC_x);
-    ui->doubleSpinBox_acc_y_zero->setValue(mainwindow->ACC_y);
-    ui->doubleSpinBox_acc_z_zero->setValue(mainwindow->ACC_z);
+    ui->doubleSpinBox_acc_x_zero->setValue(mainwindow->filtered_ACC_x);
+    ui->doubleSpinBox_acc_y_zero->setValue(mainwindow->filtered_ACC_y);
+    ui->doubleSpinBox_acc_z_zero->setValue(mainwindow->filtered_ACC_z);
     ui->doubleSpinBox_mag_x_zero->setValue(mainwindow->MAG_x);
     ui->doubleSpinBox_mag_y_zero->setValue(mainwindow->MAG_y);
     ui->doubleSpinBox_mag_z_zero->setValue(mainwindow->MAG_z);
@@ -35,9 +35,9 @@ void graphs::get_cal(void){
     ui->doubleSpinBox_gyro_x_cal->setValue(mainwindow->GYRO_x);
     ui->doubleSpinBox_gyro_y_cal->setValue(mainwindow->GYRO_y);
     ui->doubleSpinBox_gyro_z_cal->setValue(mainwindow->GYRO_z);
-    ui->doubleSpinBox_acc_x_cal->setValue(mainwindow->ACC_x);
-    ui->doubleSpinBox_acc_y_cal->setValue(mainwindow->ACC_y);
-    ui->doubleSpinBox_acc_z_cal->setValue(mainwindow->ACC_z);
+    ui->doubleSpinBox_acc_x_cal->setValue(mainwindow->filtered_ACC_x);
+    ui->doubleSpinBox_acc_y_cal->setValue(mainwindow->filtered_ACC_y);
+    ui->doubleSpinBox_acc_z_cal->setValue(mainwindow->filtered_ACC_z);
     ui->doubleSpinBox_mag_x_cal->setValue(mainwindow->MAG_x);
     ui->doubleSpinBox_mag_y_cal->setValue(mainwindow->MAG_y);
     ui->doubleSpinBox_mag_z_cal->setValue(mainwindow->MAG_z);
