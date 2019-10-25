@@ -58,7 +58,13 @@ public:
     QCustomPlot *customPlot_filtered_acc_z;
 
     QElapsedTimer graph_time;
-    int GYRO_x,GYRO_y,GYRO_z;
+
+    struct _axes{
+        int GYRO;
+    };
+    _axes X,Y,Z;
+
+    //int GYRO_x,GYRO_y,GYRO_z;
     int ACC_x,ACC_y,ACC_z;
     int MAG_x,MAG_y,MAG_z;
     double filtered_ACC_x,filtered_ACC_y,filtered_ACC_z;
@@ -71,6 +77,7 @@ public slots:
     void serial_response_handler(void);
 
 private:
+    void closeEvent(QCloseEvent *event);
 
 };
 

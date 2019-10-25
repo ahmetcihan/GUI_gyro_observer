@@ -26,6 +26,8 @@ public slots:
     void calibrate();
 
 private:
+    void closeEvent(QCloseEvent *event);
+
     MainWindow *mainwindow;
 };
 

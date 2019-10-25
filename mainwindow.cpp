@@ -34,8 +34,9 @@ MainWindow::MainWindow(QWidget *parent) :
     filter_z = & butterworth_filter;
 }
 
-
-MainWindow::~MainWindow()
-{
+void MainWindow::closeEvent(QCloseEvent *event){
+    graph_page->close();
+}
+MainWindow::~MainWindow(){
     delete ui;
 }

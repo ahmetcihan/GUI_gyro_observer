@@ -34,9 +34,9 @@ void MainWindow::serial_response_handler(void){
     crc_low = (fcrc)/256;
     if((crc_high == (u8)data_array[24])&&(crc_low == (u8)data_array[25])){
         if((data_array[0] == 'G') && (data_array[1] == 'Y') && (data_array[2] == 'R')){
-            GYRO_x = (u8)data_array[3] + 256*(u8)data_array[4];
-            GYRO_y = (u8)data_array[5] + 256*(u8)data_array[6];
-            GYRO_z = (u8)data_array[7] + 256*(u8)data_array[8];
+            X.GYRO = (u8)data_array[3] + 256*(u8)data_array[4];
+            Y.GYRO = (u8)data_array[5] + 256*(u8)data_array[6];
+            Z.GYRO = (u8)data_array[7] + 256*(u8)data_array[8];
             ACC_x = (u8)data_array[10] + 256*(u8)data_array[11];
             ACC_y = (u8)data_array[12] + 256*(u8)data_array[13];
             ACC_z = (u8)data_array[14] + 256*(u8)data_array[15];
@@ -70,19 +70,19 @@ void MainWindow::serial_response_handler(void){
             if(ACC_z > 0x8000){
                 ACC_z = ACC_z - 0x10000;
             }
-            if(GYRO_x > 0x8000){
-                GYRO_x = GYRO_x - 0x10000;
+            if(X.GYRO > 0x8000){
+                X.GYRO = X.GYRO - 0x10000;
             }
-            if(GYRO_y > 0x8000){
-                GYRO_y = GYRO_y - 0x10000;
+            if(Y.GYRO > 0x8000){
+                Y.GYRO = Y.GYRO - 0x10000;
             }
-            if(GYRO_z > 0x8000){
-                GYRO_z = GYRO_z - 0x10000;
+            if(Z.GYRO > 0x8000){
+                Z.GYRO = Z.GYRO - 0x10000;
             }
 
-            ui->label_gyro_x->setText("GYRO X : " + QString::number(GYRO_x));
-            ui->label_gyro_y->setText("GYRO Y : " + QString::number(GYRO_y));
-            ui->label_gyro_z->setText("GYRO Z : " + QString::number(GYRO_z));
+            ui->label_gyro_x->setText("GYRO X : " + QString::number(X.GYRO));
+            ui->label_gyro_y->setText("GYRO Y : " + QString::number(Y.GYRO));
+            ui->label_gyro_z->setText("GYRO Z : " + QString::number(Z.GYRO));
             ui->label_acc_x->setText("ACC X : " + QString::number(ACC_x));
             ui->label_acc_y->setText("ACC Y : " + QString::number(ACC_y));
             ui->label_acc_z->setText("ACC Z : " + QString::number(ACC_z));
@@ -90,9 +90,9 @@ void MainWindow::serial_response_handler(void){
             ui->label_mag_y->setText("MAG Y : " + QString::number(MAG_y));
             ui->label_mag_z->setText("MAG Z : " + QString::number(MAG_z));
 
-            graph_page->calibrated[0] = (double) (GYRO_x - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
-            graph_page->calibrated[1] = (double) (GYRO_y - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];
-            graph_page->calibrated[2] = (double) (GYRO_z - graph_page->ui->doubleSpinBox_gyro_z_zero->value()) * graph_page->slope[2];
+            graph_page->calibrated[0] = (double) (X.GYRO - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
+            graph_page->calibrated[1] = (double) (Y.GYRO - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];
+            graph_page->calibrated[2] = (double) (Z.GYRO - graph_page->ui->doubleSpinBox_gyro_z_zero->value()) * graph_page->slope[2];
             graph_page->calibrated[3] = (double) (ACC_x - graph_page->ui->doubleSpinBox_acc_x_zero->value()) * graph_page->slope[3];
             graph_page->calibrated[4] = (double) (ACC_y - graph_page->ui->doubleSpinBox_acc_y_zero->value()) * graph_page->slope[4];
             graph_page->calibrated[5] = (double) (ACC_z - graph_page->ui->doubleSpinBox_acc_z_zero->value()) * graph_page->slope[5];

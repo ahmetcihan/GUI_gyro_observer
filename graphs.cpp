@@ -1,6 +1,7 @@
 #include "graphs.h"
 #include "mainwindow.h"
 #include "ui_graphs.h"
+#include <QCloseEvent>
 
 graphs::graphs(MainWindow *master, QWidget *parent) :
     QWidget(parent),
@@ -18,10 +19,11 @@ graphs::graphs(MainWindow *master, QWidget *parent) :
     }
 
 }
+
 void graphs::get_zero(void){
-    ui->doubleSpinBox_gyro_x_zero->setValue(mainwindow->GYRO_x);
-    ui->doubleSpinBox_gyro_y_zero->setValue(mainwindow->GYRO_y);
-    ui->doubleSpinBox_gyro_z_zero->setValue(mainwindow->GYRO_z);
+    ui->doubleSpinBox_gyro_x_zero->setValue(mainwindow->X.GYRO);
+    ui->doubleSpinBox_gyro_y_zero->setValue(mainwindow->Y.GYRO);
+    ui->doubleSpinBox_gyro_z_zero->setValue(mainwindow->Z.GYRO);
     ui->doubleSpinBox_acc_x_zero->setValue(mainwindow->filtered_ACC_x);
     ui->doubleSpinBox_acc_y_zero->setValue(mainwindow->filtered_ACC_y);
     ui->doubleSpinBox_acc_z_zero->setValue(mainwindow->filtered_ACC_z);
@@ -32,9 +34,9 @@ void graphs::get_zero(void){
     //qDebug() << "ACC x" << mainwindow->ACC_x;
 }
 void graphs::get_cal(void){
-    ui->doubleSpinBox_gyro_x_cal->setValue(mainwindow->GYRO_x);
-    ui->doubleSpinBox_gyro_y_cal->setValue(mainwindow->GYRO_y);
-    ui->doubleSpinBox_gyro_z_cal->setValue(mainwindow->GYRO_z);
+    ui->doubleSpinBox_gyro_x_cal->setValue(mainwindow->X.GYRO);
+    ui->doubleSpinBox_gyro_y_cal->setValue(mainwindow->Y.GYRO);
+    ui->doubleSpinBox_gyro_z_cal->setValue(mainwindow->Z.GYRO);
     ui->doubleSpinBox_acc_x_cal->setValue(mainwindow->filtered_ACC_x);
     ui->doubleSpinBox_acc_y_cal->setValue(mainwindow->filtered_ACC_y);
     ui->doubleSpinBox_acc_z_cal->setValue(mainwindow->filtered_ACC_z);
@@ -58,7 +60,9 @@ void graphs::calibrate(void){
     }
 }
 
-graphs::~graphs()
-{
+void graphs::closeEvent(QCloseEvent *event){
+    mainwindow->close();
+}
+graphs::~graphs(){
     delete ui;
 }

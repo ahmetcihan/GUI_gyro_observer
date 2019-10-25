@@ -134,9 +134,9 @@ void MainWindow::plot_graph(void){
         customPlot_filtered_acc_z->xAxis->setRange(FAZ.x - 10,FAZ.x + 1);
     }
 
-    GX.y = GYRO_x;
-    GY.y = GYRO_y;
-    GZ.y = GYRO_z;
+    GX.y = X.GYRO;
+    GY.y = Y.GYRO;
+    GZ.y = Z.GYRO;
     AX.y = ACC_x;
     AY.y = ACC_y;
     AZ.y = ACC_z;
