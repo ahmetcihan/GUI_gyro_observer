@@ -25,9 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(read_timer, SIGNAL(timeout()),this,SLOT(serial_response_handler()));
 
     initilize_plot();
-    butterworth_filter_coeffs(&X_ax_0, &X_ax_1, &X_by_0, &X_by_1, &X_by_2);
-    butterworth_filter_coeffs(&Y_ax_0, &Y_ax_1, &Y_by_0, &Y_by_1, &Y_by_2);
-    butterworth_filter_coeffs(&Z_ax_0, &Z_ax_1, &Z_by_0, &Z_by_1, &Z_by_2);
+    butterworth_filter_coeffs(&X.ax_0, &X.ax_1, &X.by_0, &X.by_1, &X.by_2);
+    butterworth_filter_coeffs(&Y.ax_0, &Y.ax_1, &Y.by_0, &Y.by_1, &Y.by_2);
+    butterworth_filter_coeffs(&Z.ax_0, &Z.ax_1, &Z.by_0, &Z.by_1, &Z.by_2);
 
     filter_x = & butterworth_filter;
     filter_y = & butterworth_filter;

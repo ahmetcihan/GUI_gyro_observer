@@ -24,12 +24,12 @@ void graphs::get_zero(void){
     ui->doubleSpinBox_gyro_x_zero->setValue(mainwindow->X.GYRO);
     ui->doubleSpinBox_gyro_y_zero->setValue(mainwindow->Y.GYRO);
     ui->doubleSpinBox_gyro_z_zero->setValue(mainwindow->Z.GYRO);
-    ui->doubleSpinBox_acc_x_zero->setValue(mainwindow->filtered_ACC_x);
-    ui->doubleSpinBox_acc_y_zero->setValue(mainwindow->filtered_ACC_y);
-    ui->doubleSpinBox_acc_z_zero->setValue(mainwindow->filtered_ACC_z);
-    ui->doubleSpinBox_mag_x_zero->setValue(mainwindow->MAG_x);
-    ui->doubleSpinBox_mag_y_zero->setValue(mainwindow->MAG_y);
-    ui->doubleSpinBox_mag_z_zero->setValue(mainwindow->MAG_z);
+    ui->doubleSpinBox_acc_x_zero->setValue(mainwindow->X.filtered_ACC);
+    ui->doubleSpinBox_acc_y_zero->setValue(mainwindow->Y.filtered_ACC);
+    ui->doubleSpinBox_acc_z_zero->setValue(mainwindow->Z.filtered_ACC);
+    ui->doubleSpinBox_mag_x_zero->setValue(mainwindow->X.MAG);
+    ui->doubleSpinBox_mag_y_zero->setValue(mainwindow->Y.MAG);
+    ui->doubleSpinBox_mag_z_zero->setValue(mainwindow->Z.MAG);
 
     //qDebug() << "ACC x" << mainwindow->ACC_x;
 }
@@ -37,12 +37,12 @@ void graphs::get_cal(void){
     ui->doubleSpinBox_gyro_x_cal->setValue(mainwindow->X.GYRO);
     ui->doubleSpinBox_gyro_y_cal->setValue(mainwindow->Y.GYRO);
     ui->doubleSpinBox_gyro_z_cal->setValue(mainwindow->Z.GYRO);
-    ui->doubleSpinBox_acc_x_cal->setValue(mainwindow->filtered_ACC_x);
-    ui->doubleSpinBox_acc_y_cal->setValue(mainwindow->filtered_ACC_y);
-    ui->doubleSpinBox_acc_z_cal->setValue(mainwindow->filtered_ACC_z);
-    ui->doubleSpinBox_mag_x_cal->setValue(mainwindow->MAG_x);
-    ui->doubleSpinBox_mag_y_cal->setValue(mainwindow->MAG_y);
-    ui->doubleSpinBox_mag_z_cal->setValue(mainwindow->MAG_z);
+    ui->doubleSpinBox_acc_x_cal->setValue(mainwindow->X.filtered_ACC);
+    ui->doubleSpinBox_acc_y_cal->setValue(mainwindow->Y.filtered_ACC);
+    ui->doubleSpinBox_acc_z_cal->setValue(mainwindow->Z.filtered_ACC);
+    ui->doubleSpinBox_mag_x_cal->setValue(mainwindow->X.MAG);
+    ui->doubleSpinBox_mag_y_cal->setValue(mainwindow->Y.MAG);
+    ui->doubleSpinBox_mag_z_cal->setValue(mainwindow->Z.MAG);
 }
 void graphs::calibrate(void){
     slope[0] = ui->doubleSpinBox_gyro_x_cal_val->value() / (ui->doubleSpinBox_gyro_x_cal->value() - ui->doubleSpinBox_gyro_x_zero->value());
