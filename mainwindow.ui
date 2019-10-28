@@ -341,7 +341,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="plot_filtered_acc_x" native="true">
+   <widget class="QWidget" name="plot_calibrated_acc_x" native="true">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -351,7 +351,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="plot_filtered_acc_z" native="true">
+   <widget class="QWidget" name="plot_calibrated_acc_z" native="true">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -380,13 +380,13 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
     </property>
     <property name="text">
-     <string>FILTERED ACC Z AXIS</string>
+     <string>Calibrated ACC Z AXIS</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="plot_filtered_acc_y" native="true">
+   <widget class="QWidget" name="plot_calibrated_acc_y" native="true">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -396,7 +396,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_filtered_acc_x">
+   <widget class="QLabel" name="label_calibrated_acc_x">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -415,13 +415,13 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
     </property>
     <property name="text">
-     <string>FILTERED ACC X AXIS</string>
+     <string>Calibrated ACC X AXIS</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_filtered_acc_y">
+   <widget class="QLabel" name="label_calibrated_acc_y">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -440,7 +440,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
     </property>
     <property name="text">
-     <string>FILTERED ACC Y AXIS</string>
+     <string>Calibrated ACC Y AXIS</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

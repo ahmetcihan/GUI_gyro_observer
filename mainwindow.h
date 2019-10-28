@@ -49,11 +49,12 @@ public:
         QCustomPlot *customPlot_gyro;
         QCustomPlot *customPlot_acc;
         QCustomPlot *customPlot_mag;
-        QCustomPlot *customPlot_filtered_acc;
+        QCustomPlot *customPlot_calibrated_acc;
         int GYRO;
         int ACC;
         int MAG;
-        double filtered_ACC;
+        double calibrated_ACC;
+        double filtered_calibrated_ACC;
         double ax_0,ax_1,by_0,by_1,by_2,xv[3],yv[3];
     };
     _axes X,Y,Z;

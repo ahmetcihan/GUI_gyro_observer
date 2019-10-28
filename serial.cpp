@@ -110,9 +110,13 @@ void MainWindow::serial_response_handler(void){
             graph_page->ui->label_calibrated_mag_y->setText(QString::number(graph_page->calibrated[7]));
             graph_page->ui->label_calibrated_mag_z->setText(QString::number(graph_page->calibrated[8]));
 
-            X.filtered_ACC = filter_x(X.ACC, X.ax_0, X.ax_1, X.by_0, X.by_1, X.by_2,X.xv,X.yv);
-            Y.filtered_ACC = filter_y(Y.ACC, Y.ax_0, Y.ax_1, Y.by_0, Y.by_1, Y.by_2,Y.xv,Y.yv);
-            Z.filtered_ACC = filter_z(Z.ACC, Z.ax_0, Z.ax_1, Z.by_0, Z.by_1, Z.by_2,Z.xv,Z.yv);
+            //X.calibrated_ACC = filter_x(X.ACC, X.ax_0, X.ax_1, X.by_0, X.by_1, X.by_2,X.xv,X.yv);
+            //Y.calibrated_ACC = filter_y(Y.ACC, Y.ax_0, Y.ax_1, Y.by_0, Y.by_1, Y.by_2,Y.xv,Y.yv);
+            //Z.calibrated_ACC = filter_z(Z.ACC, Z.ax_0, Z.ax_1, Z.by_0, Z.by_1, Z.by_2,Z.xv,Z.yv);
+
+            X.calibrated_ACC = graph_page->calibrated[3];
+            Y.calibrated_ACC = graph_page->calibrated[4];
+            Z.calibrated_ACC = graph_page->calibrated[5];
             plot_graph();
         }
     }

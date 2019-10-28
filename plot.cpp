@@ -12,9 +12,9 @@ void MainWindow::initilize_plot(void){
     X.customPlot_mag = new QCustomPlot(this->ui->plot_mag_x);
     Y.customPlot_mag = new QCustomPlot(this->ui->plot_mag_y);
     Z.customPlot_mag = new QCustomPlot(this->ui->plot_mag_z);
-    X.customPlot_filtered_acc = new QCustomPlot(this->ui->plot_filtered_acc_x);
-    Y.customPlot_filtered_acc = new QCustomPlot(this->ui->plot_filtered_acc_y);
-    Z.customPlot_filtered_acc = new QCustomPlot(this->ui->plot_filtered_acc_z);
+    X.customPlot_calibrated_acc = new QCustomPlot(this->ui->plot_calibrated_acc_x);
+    Y.customPlot_calibrated_acc = new QCustomPlot(this->ui->plot_calibrated_acc_y);
+    Z.customPlot_calibrated_acc = new QCustomPlot(this->ui->plot_calibrated_acc_z);
 
     // create graph and assign data to it:
     X.customPlot_gyro->addGraph();
@@ -26,9 +26,9 @@ void MainWindow::initilize_plot(void){
     X.customPlot_mag->addGraph();
     Y.customPlot_mag->addGraph();
     Z.customPlot_mag->addGraph();
-    X.customPlot_filtered_acc->addGraph();
-    Y.customPlot_filtered_acc->addGraph();
-    Z.customPlot_filtered_acc->addGraph();
+    X.customPlot_calibrated_acc->addGraph();
+    Y.customPlot_calibrated_acc->addGraph();
+    Z.customPlot_calibrated_acc->addGraph();
 
     X.customPlot_acc->addGraph();
     Y.customPlot_acc->addGraph();
@@ -58,9 +58,9 @@ void MainWindow::initilize_plot(void){
     X.customPlot_mag->setGeometry(0,0,ui->plot_mag_x->width(),ui->plot_mag_x->height());
     Y.customPlot_mag->setGeometry(0,0,ui->plot_mag_y->width(),ui->plot_mag_y->height());
     Z.customPlot_mag->setGeometry(0,0,ui->plot_mag_z->width(),ui->plot_mag_z->height());
-    X.customPlot_filtered_acc->setGeometry(0,0,ui->plot_filtered_acc_x->width(),ui->plot_filtered_acc_x->height());
-    Y.customPlot_filtered_acc->setGeometry(0,0,ui->plot_filtered_acc_y->width(),ui->plot_filtered_acc_y->height());
-    Z.customPlot_filtered_acc->setGeometry(0,0,ui->plot_filtered_acc_z->width(),ui->plot_filtered_acc_z->height());
+    X.customPlot_calibrated_acc->setGeometry(0,0,ui->plot_calibrated_acc_x->width(),ui->plot_calibrated_acc_x->height());
+    Y.customPlot_calibrated_acc->setGeometry(0,0,ui->plot_calibrated_acc_y->width(),ui->plot_calibrated_acc_y->height());
+    Z.customPlot_calibrated_acc->setGeometry(0,0,ui->plot_calibrated_acc_z->width(),ui->plot_calibrated_acc_z->height());
 
     // give the axes some labels:
     //X.customPlot_gyro->yAxis->setLabel("X AXIS");
@@ -73,9 +73,9 @@ void MainWindow::initilize_plot(void){
     X.customPlot_mag->xAxis->setLabel("TIME (s)");
     Y.customPlot_mag->xAxis->setLabel("TIME (s)");
     Z.customPlot_mag->xAxis->setLabel("TIME (s)");
-    X.customPlot_filtered_acc->xAxis->setLabel("TIME (s)");
-    Y.customPlot_filtered_acc->xAxis->setLabel("TIME (s)");
-    Z.customPlot_filtered_acc->xAxis->setLabel("TIME (s)");
+    X.customPlot_calibrated_acc->xAxis->setLabel("TIME (s)");
+    Y.customPlot_calibrated_acc->xAxis->setLabel("TIME (s)");
+    Z.customPlot_calibrated_acc->xAxis->setLabel("TIME (s)");
 
 }
 void MainWindow::plot_graph(void){
@@ -85,7 +85,7 @@ void MainWindow::plot_graph(void){
     struct _axis{
         double x,y;
     };
-    static struct _axis GX, GY, GZ, AX, AY, AZ, MX, MY, MZ, FAX, FAY, FAZ;
+    static struct _axis GX, GY, GZ, AX, AY, AZ, MX, MY, MZ, CAX, CAY, CAZ;
 
     if(first_in == false){
         first_in = true;
@@ -101,9 +101,9 @@ void MainWindow::plot_graph(void){
     MX.x = GX.x;
     MY.x = GX.x;
     MZ.x = GX.x;
-    FAX.x = GX.x;
-    FAY.x = GX.x;
-    FAZ.x = GX.x;
+    CAX.x = GX.x;
+    CAY.x = GX.x;
+    CAZ.x = GX.x;
 
     if(GX.x < 10){
         X.customPlot_gyro->xAxis->setRange(0,GX.x + 1);
@@ -115,9 +115,9 @@ void MainWindow::plot_graph(void){
         X.customPlot_mag->xAxis->setRange(0,MX.x + 1);
         Y.customPlot_mag->xAxis->setRange(0,MY.x + 1);
         Z.customPlot_mag->xAxis->setRange(0,MZ.x + 1);
-        X.customPlot_filtered_acc->xAxis->setRange(0,FAX.x + 1);
-        Y.customPlot_filtered_acc->xAxis->setRange(0,FAY.x + 1);
-        Z.customPlot_filtered_acc->xAxis->setRange(0,FAZ.x + 1);
+        X.customPlot_calibrated_acc->xAxis->setRange(0,CAX.x + 1);
+        Y.customPlot_calibrated_acc->xAxis->setRange(0,CAY.x + 1);
+        Z.customPlot_calibrated_acc->xAxis->setRange(0,CAZ.x + 1);
     }
     else{
         X.customPlot_gyro->xAxis->setRange(GX.x - 10,GX.x + 1);
@@ -129,9 +129,9 @@ void MainWindow::plot_graph(void){
         X.customPlot_mag->xAxis->setRange(MX.x - 10,MX.x + 1);
         Y.customPlot_mag->xAxis->setRange(MY.x - 10,MY.x + 1);
         Z.customPlot_mag->xAxis->setRange(MZ.x - 10,MZ.x + 1);
-        X.customPlot_filtered_acc->xAxis->setRange(FAX.x - 10,FAX.x + 1);
-        Y.customPlot_filtered_acc->xAxis->setRange(FAY.x - 10,FAY.x + 1);
-        Z.customPlot_filtered_acc->xAxis->setRange(FAZ.x - 10,FAZ.x + 1);
+        X.customPlot_calibrated_acc->xAxis->setRange(CAX.x - 10,CAX.x + 1);
+        Y.customPlot_calibrated_acc->xAxis->setRange(CAY.x - 10,CAY.x + 1);
+        Z.customPlot_calibrated_acc->xAxis->setRange(CAZ.x - 10,CAZ.x + 1);
     }
 
     GX.y = X.GYRO;
@@ -143,9 +143,9 @@ void MainWindow::plot_graph(void){
     MX.y = X.MAG;
     MY.y = Y.MAG;
     MZ.y = Z.MAG;
-    FAX.y = X.filtered_ACC;
-    FAY.y = Y.filtered_ACC;
-    FAZ.y = Z.filtered_ACC;
+    CAX.y = X.calibrated_ACC;
+    CAY.y = Y.calibrated_ACC;
+    CAZ.y = Z.calibrated_ACC;
 
     //X.customPlot_gyro->yAxis->setRange(GX.min_y - 1,GX.max_y + 1);
 
@@ -158,13 +158,13 @@ void MainWindow::plot_graph(void){
     X.customPlot_mag->graph(0)->addData(MX.x,MX.y);
     Y.customPlot_mag->graph(0)->addData(MY.x,MY.y);
     Z.customPlot_mag->graph(0)->addData(MZ.x,MZ.y);
-    X.customPlot_filtered_acc->graph(0)->addData(FAX.x,FAX.y);
-    Y.customPlot_filtered_acc->graph(0)->addData(FAY.x,FAY.y);
-    Z.customPlot_filtered_acc->graph(0)->addData(FAZ.x,FAZ.y);
+    X.customPlot_calibrated_acc->graph(0)->addData(CAX.x,CAX.y);
+    Y.customPlot_calibrated_acc->graph(0)->addData(CAY.x,CAY.y);
+    Z.customPlot_calibrated_acc->graph(0)->addData(CAZ.x,CAZ.y);
 
-    X.customPlot_acc->graph(1)->addData(FAX.x,FAX.y);
-    Y.customPlot_acc->graph(1)->addData(FAY.x,FAY.y);
-    Z.customPlot_acc->graph(1)->addData(FAZ.x,FAZ.y);
+    X.customPlot_acc->graph(1)->addData(CAX.x,CAX.y);
+    Y.customPlot_acc->graph(1)->addData(CAY.x,CAY.y);
+    Z.customPlot_acc->graph(1)->addData(CAZ.x,CAZ.y);
     counter++;
 
     X.customPlot_gyro->graph(0)->rescaleValueAxis(false,true);
@@ -176,9 +176,9 @@ void MainWindow::plot_graph(void){
     X.customPlot_mag->graph(0)->rescaleValueAxis(false,true);
     Y.customPlot_mag->graph(0)->rescaleValueAxis(false,true);
     Z.customPlot_mag->graph(0)->rescaleValueAxis(false,true);
-    X.customPlot_filtered_acc->graph(0)->rescaleValueAxis(false,true);
-    Y.customPlot_filtered_acc->graph(0)->rescaleValueAxis(false,true);
-    Z.customPlot_filtered_acc->graph(0)->rescaleValueAxis(false,true);
+    X.customPlot_calibrated_acc->graph(0)->rescaleValueAxis(false,true);
+    Y.customPlot_calibrated_acc->graph(0)->rescaleValueAxis(false,true);
+    Z.customPlot_calibrated_acc->graph(0)->rescaleValueAxis(false,true);
 
     X.customPlot_gyro->replot();
     Y.customPlot_gyro->replot();
@@ -189,10 +189,9 @@ void MainWindow::plot_graph(void){
     X.customPlot_mag->replot();
     Y.customPlot_mag->replot();
     Z.customPlot_mag->replot();
-    X.customPlot_filtered_acc->replot();
-    Y.customPlot_filtered_acc->replot();
-    Z.customPlot_filtered_acc->replot();
-
+    X.customPlot_calibrated_acc->replot();
+    Y.customPlot_calibrated_acc->replot();
+    Z.customPlot_calibrated_acc->replot();
 
 }
 
