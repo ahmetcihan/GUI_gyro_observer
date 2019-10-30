@@ -361,7 +361,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_filtered_acc_z">
+   <widget class="QLabel" name="label_calibrated_acc_z">
     <property name="geometry">
      <rect>
       <x>710</x>

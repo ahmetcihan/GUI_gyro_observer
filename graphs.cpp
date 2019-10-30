@@ -15,7 +15,7 @@ graphs::graphs(MainWindow *master, QWidget *parent) :
     connect(this->ui->pushButton_calibrate,SIGNAL(clicked(bool)),this,SLOT(calibrate()));
 
     for(u8 i = 0; i < 9 ;i++){
-        slope[i] = 1;
+        slope[i] = 0;
     }
 }
 
@@ -23,9 +23,9 @@ void graphs::get_zero(void){
     ui->doubleSpinBox_gyro_x_zero->setValue(mainwindow->X.GYRO);
     ui->doubleSpinBox_gyro_y_zero->setValue(mainwindow->Y.GYRO);
     ui->doubleSpinBox_gyro_z_zero->setValue(mainwindow->Z.GYRO);
-    ui->doubleSpinBox_acc_x_zero->setValue(mainwindow->X.calibrated_ACC);
-    ui->doubleSpinBox_acc_y_zero->setValue(mainwindow->Y.calibrated_ACC);
-    ui->doubleSpinBox_acc_z_zero->setValue(mainwindow->Z.calibrated_ACC);
+    ui->doubleSpinBox_acc_x_zero->setValue(mainwindow->X.ACC);
+    ui->doubleSpinBox_acc_y_zero->setValue(mainwindow->Y.ACC);
+    ui->doubleSpinBox_acc_z_zero->setValue(mainwindow->Z.ACC);
     ui->doubleSpinBox_mag_x_zero->setValue(mainwindow->X.MAG);
     ui->doubleSpinBox_mag_y_zero->setValue(mainwindow->Y.MAG);
     ui->doubleSpinBox_mag_z_zero->setValue(mainwindow->Z.MAG);
@@ -34,9 +34,9 @@ void graphs::get_cal(void){
     ui->doubleSpinBox_gyro_x_cal->setValue(mainwindow->X.GYRO);
     ui->doubleSpinBox_gyro_y_cal->setValue(mainwindow->Y.GYRO);
     ui->doubleSpinBox_gyro_z_cal->setValue(mainwindow->Z.GYRO);
-    ui->doubleSpinBox_acc_x_cal->setValue(mainwindow->X.calibrated_ACC);
-    ui->doubleSpinBox_acc_y_cal->setValue(mainwindow->Y.calibrated_ACC);
-    ui->doubleSpinBox_acc_z_cal->setValue(mainwindow->Z.calibrated_ACC);
+    ui->doubleSpinBox_acc_x_cal->setValue(mainwindow->X.ACC);
+    ui->doubleSpinBox_acc_y_cal->setValue(mainwindow->Y.ACC);
+    ui->doubleSpinBox_acc_z_cal->setValue(mainwindow->Z.ACC);
     ui->doubleSpinBox_mag_x_cal->setValue(mainwindow->X.MAG);
     ui->doubleSpinBox_mag_y_cal->setValue(mainwindow->Y.MAG);
     ui->doubleSpinBox_mag_z_cal->setValue(mainwindow->Z.MAG);

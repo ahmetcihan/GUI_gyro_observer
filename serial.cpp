@@ -25,6 +25,8 @@ void MainWindow::serial_response_handler(void){
     u32 fcrc;
     u8 crc_low,crc_high;
     static u32 missed = 0;
+    unsigned char status;
+    static QElapsedTimer elaps;
 
     read_timer->stop();
     data_array = serial->readAll();
@@ -43,8 +45,12 @@ void MainWindow::serial_response_handler(void){
             X.MAG = (u8)data_array[17] + 256*(u8)data_array[18];
             Y.MAG = (u8)data_array[19] + 256*(u8)data_array[20];
             Z.MAG = (u8)data_array[21] + 256*(u8)data_array[22];
-//            status = (u8)data_array[9];
-//            qDebug() << "GYRO status :" << QString::number((u8)data_array[9],2) << "ACC status :" << QString::number((u8)data_array[16],2)<< "MAG status :" << QString::number((u8)data_array[23],2);
+            status = (u8)data_array[9];
+            //qDebug() << "GYRO status :" << QString::number((u8)data_array[9],2) << "ACC status :" << QString::number((u8)data_array[16],2)<< "MAG status :" << QString::number((u8)data_array[23],2);
+            if(((u8)data_array[16] & 0xF) == 0xF){
+                qDebug() << "elasp :" << elaps.elapsed();
+                elaps.restart();
+            }
 //            if((u8) data_array[23] == 0 ){
 //                qDebug() << "MAG status : 0";
 //            }
@@ -89,6 +95,9 @@ void MainWindow::serial_response_handler(void){
             ui->label_mag_x->setText("MAG X : " + QString::number(X.MAG));
             ui->label_mag_y->setText("MAG Y : " + QString::number(Y.MAG));
             ui->label_mag_z->setText("MAG Z : " + QString::number(Z.MAG));
+            ui->label_calibrated_acc_x->setText("CAL X : " + QString::number(X.calibrated_ACC));
+            ui->label_calibrated_acc_y->setText("CAL Y : " + QString::number(Y.calibrated_ACC));
+            ui->label_calibrated_acc_z->setText("CAL Z : " + QString::number(Z.calibrated_ACC));
 
             graph_page->calibrated[0] = (double) (X.GYRO - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
             graph_page->calibrated[1] = (double) (Y.GYRO - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];
@@ -110,9 +119,9 @@ void MainWindow::serial_response_handler(void){
             graph_page->ui->label_calibrated_mag_y->setText(QString::number(graph_page->calibrated[7]));
             graph_page->ui->label_calibrated_mag_z->setText(QString::number(graph_page->calibrated[8]));
 
-            //X.calibrated_ACC = filter_x(X.ACC, X.ax_0, X.ax_1, X.by_0, X.by_1, X.by_2,X.xv,X.yv);
-            //Y.calibrated_ACC = filter_y(Y.ACC, Y.ax_0, Y.ax_1, Y.by_0, Y.by_1, Y.by_2,Y.xv,Y.yv);
-            //Z.calibrated_ACC = filter_z(Z.ACC, Z.ax_0, Z.ax_1, Z.by_0, Z.by_1, Z.by_2,Z.xv,Z.yv);
+            X.filtered_calibrated_ACC = filter_x(X.calibrated_ACC, X.ax_0, X.ax_1, X.by_0, X.by_1, X.by_2,X.xv,X.yv);
+            Y.filtered_calibrated_ACC = filter_y(Y.calibrated_ACC, Y.ax_0, Y.ax_1, Y.by_0, Y.by_1, Y.by_2,Y.xv,Y.yv);
+            Z.filtered_calibrated_ACC = filter_z(Z.calibrated_ACC, Z.ax_0, Z.ax_1, Z.by_0, Z.by_1, Z.by_2,Z.xv,Z.yv);
 
             X.calibrated_ACC = graph_page->calibrated[3];
             Y.calibrated_ACC = graph_page->calibrated[4];

@@ -30,24 +30,25 @@ void MainWindow::initilize_plot(void){
     Y.customPlot_calibrated_acc->addGraph();
     Z.customPlot_calibrated_acc->addGraph();
 
-    X.customPlot_acc->addGraph();
-    Y.customPlot_acc->addGraph();
-    Z.customPlot_acc->addGraph();
+    X.customPlot_calibrated_acc->graph(0)->setPen(QPen(Qt::blue));
+    Y.customPlot_calibrated_acc->graph(0)->setPen(QPen(Qt::blue));
+    Z.customPlot_calibrated_acc->graph(0)->setPen(QPen(Qt::blue));
 
-    X.customPlot_acc->graph(0)->setPen(QPen(Qt::blue));
-    Y.customPlot_acc->graph(0)->setPen(QPen(Qt::blue));
-    Z.customPlot_acc->graph(0)->setPen(QPen(Qt::blue));
-    X.customPlot_acc->graph(1)->setPen(QPen(Qt::red));
-    Y.customPlot_acc->graph(1)->setPen(QPen(Qt::red));
-    Z.customPlot_acc->graph(1)->setPen(QPen(Qt::red));
+    X.customPlot_calibrated_acc->addGraph();
+    Y.customPlot_calibrated_acc->addGraph();
+    Z.customPlot_calibrated_acc->addGraph();
 
-    X.customPlot_acc->graph(1)->setLineStyle(QCPGraph::lsLine);
-    Y.customPlot_acc->graph(1)->setLineStyle(QCPGraph::lsLine);
-    Z.customPlot_acc->graph(1)->setLineStyle(QCPGraph::lsLine);
-    X.customPlot_acc->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
-    Y.customPlot_acc->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
-    Z.customPlot_acc->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+    X.customPlot_calibrated_acc->graph(1)->setPen(QPen(Qt::red));
+    Y.customPlot_calibrated_acc->graph(1)->setPen(QPen(Qt::red));
+    Z.customPlot_calibrated_acc->graph(1)->setPen(QPen(Qt::red));
 
+    X.customPlot_calibrated_acc->graph(1)->setLineStyle(QCPGraph::lsLine);
+    Y.customPlot_calibrated_acc->graph(1)->setLineStyle(QCPGraph::lsLine);
+    Z.customPlot_calibrated_acc->graph(1)->setLineStyle(QCPGraph::lsLine);
+
+    X.customPlot_calibrated_acc->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+    Y.customPlot_calibrated_acc->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+    Z.customPlot_calibrated_acc->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
 
     X.customPlot_gyro->setGeometry(0,0,ui->plot_gyro_x->width(),ui->plot_gyro_x->height());
     Y.customPlot_gyro->setGeometry(0,0,ui->plot_gyro_y->width(),ui->plot_gyro_y->height());
@@ -81,90 +82,60 @@ void MainWindow::initilize_plot(void){
 void MainWindow::plot_graph(void){
     static bool first_in = false;
     static unsigned int counter = 0;
-
-    struct _axis{
-        double x,y;
-    };
-    static struct _axis GX, GY, GZ, AX, AY, AZ, MX, MY, MZ, CAX, CAY, CAZ;
+    double x_axis;
 
     if(first_in == false){
         first_in = true;
         graph_time.start();
         counter = 0;
     }
-    GX.x = (double)graph_time.elapsed() / 1000;
-    GY.x = GX.x;
-    GZ.x = GX.x;
-    AX.x = GX.x;
-    AY.x = GX.x;
-    AZ.x = GX.x;
-    MX.x = GX.x;
-    MY.x = GX.x;
-    MZ.x = GX.x;
-    CAX.x = GX.x;
-    CAY.x = GX.x;
-    CAZ.x = GX.x;
+    x_axis = (double)graph_time.elapsed() / 1000;
 
-    if(GX.x < 10){
-        X.customPlot_gyro->xAxis->setRange(0,GX.x + 1);
-        Y.customPlot_gyro->xAxis->setRange(0,GY.x + 1);
-        Z.customPlot_gyro->xAxis->setRange(0,GZ.x + 1);
-        X.customPlot_acc->xAxis->setRange(0,AX.x + 1);
-        Y.customPlot_acc->xAxis->setRange(0,AY.x + 1);
-        Z.customPlot_acc->xAxis->setRange(0,AZ.x + 1);
-        X.customPlot_mag->xAxis->setRange(0,MX.x + 1);
-        Y.customPlot_mag->xAxis->setRange(0,MY.x + 1);
-        Z.customPlot_mag->xAxis->setRange(0,MZ.x + 1);
-        X.customPlot_calibrated_acc->xAxis->setRange(0,CAX.x + 1);
-        Y.customPlot_calibrated_acc->xAxis->setRange(0,CAY.x + 1);
-        Z.customPlot_calibrated_acc->xAxis->setRange(0,CAZ.x + 1);
+    if(x_axis < 10){
+        X.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+        Y.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+        Z.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+        X.customPlot_acc->xAxis->setRange(0,x_axis + 1);
+        Y.customPlot_acc->xAxis->setRange(0,x_axis + 1);
+        Z.customPlot_acc->xAxis->setRange(0,x_axis + 1);
+        X.customPlot_mag->xAxis->setRange(0,x_axis + 1);
+        Y.customPlot_mag->xAxis->setRange(0,x_axis + 1);
+        Z.customPlot_mag->xAxis->setRange(0,x_axis + 1);
+        X.customPlot_calibrated_acc->xAxis->setRange(0,x_axis + 1);
+        Y.customPlot_calibrated_acc->xAxis->setRange(0,x_axis + 1);
+        Z.customPlot_calibrated_acc->xAxis->setRange(0,x_axis + 1);
     }
     else{
-        X.customPlot_gyro->xAxis->setRange(GX.x - 10,GX.x + 1);
-        Y.customPlot_gyro->xAxis->setRange(GY.x - 10,GY.x + 1);
-        Z.customPlot_gyro->xAxis->setRange(GZ.x - 10,GZ.x + 1);
-        X.customPlot_acc->xAxis->setRange(AX.x - 10,AX.x + 1);
-        Y.customPlot_acc->xAxis->setRange(AY.x - 10,AY.x + 1);
-        Z.customPlot_acc->xAxis->setRange(AZ.x - 10,AZ.x + 1);
-        X.customPlot_mag->xAxis->setRange(MX.x - 10,MX.x + 1);
-        Y.customPlot_mag->xAxis->setRange(MY.x - 10,MY.x + 1);
-        Z.customPlot_mag->xAxis->setRange(MZ.x - 10,MZ.x + 1);
-        X.customPlot_calibrated_acc->xAxis->setRange(CAX.x - 10,CAX.x + 1);
-        Y.customPlot_calibrated_acc->xAxis->setRange(CAY.x - 10,CAY.x + 1);
-        Z.customPlot_calibrated_acc->xAxis->setRange(CAZ.x - 10,CAZ.x + 1);
+        X.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Y.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Z.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+        X.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Y.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Z.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
+        X.customPlot_mag->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Y.customPlot_mag->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Z.customPlot_mag->xAxis->setRange(x_axis - 10,x_axis + 1);
+        X.customPlot_calibrated_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Y.customPlot_calibrated_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Z.customPlot_calibrated_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
     }
 
-    GX.y = X.GYRO;
-    GY.y = Y.GYRO;
-    GZ.y = Z.GYRO;
-    AX.y = X.ACC;
-    AY.y = Y.ACC;
-    AZ.y = Z.ACC;
-    MX.y = X.MAG;
-    MY.y = Y.MAG;
-    MZ.y = Z.MAG;
-    CAX.y = X.calibrated_ACC;
-    CAY.y = Y.calibrated_ACC;
-    CAZ.y = Z.calibrated_ACC;
+    X.customPlot_gyro->graph(0)->addData(x_axis,X.GYRO);
+    Y.customPlot_gyro->graph(0)->addData(x_axis,Y.GYRO);
+    Z.customPlot_gyro->graph(0)->addData(x_axis,Z.GYRO);
+    X.customPlot_acc->graph(0)->addData(x_axis,X.ACC);
+    Y.customPlot_acc->graph(0)->addData(x_axis,Y.ACC);
+    Z.customPlot_acc->graph(0)->addData(x_axis,Z.ACC);
+    X.customPlot_mag->graph(0)->addData(x_axis,X.MAG);
+    Y.customPlot_mag->graph(0)->addData(x_axis,Y.MAG);
+    Z.customPlot_mag->graph(0)->addData(x_axis,Z.MAG);
+    X.customPlot_calibrated_acc->graph(0)->addData(x_axis,X.calibrated_ACC);
+    Y.customPlot_calibrated_acc->graph(0)->addData(x_axis,Y.calibrated_ACC);
+    Z.customPlot_calibrated_acc->graph(0)->addData(x_axis,Z.calibrated_ACC);
 
-    //X.customPlot_gyro->yAxis->setRange(GX.min_y - 1,GX.max_y + 1);
-
-    X.customPlot_gyro->graph(0)->addData(GX.x,GX.y);
-    Y.customPlot_gyro->graph(0)->addData(GY.x,GY.y);
-    Z.customPlot_gyro->graph(0)->addData(GZ.x,GZ.y);
-    X.customPlot_acc->graph(0)->addData(AX.x,AX.y);
-    Y.customPlot_acc->graph(0)->addData(AY.x,AY.y);
-    Z.customPlot_acc->graph(0)->addData(AZ.x,AZ.y);
-    X.customPlot_mag->graph(0)->addData(MX.x,MX.y);
-    Y.customPlot_mag->graph(0)->addData(MY.x,MY.y);
-    Z.customPlot_mag->graph(0)->addData(MZ.x,MZ.y);
-    X.customPlot_calibrated_acc->graph(0)->addData(CAX.x,CAX.y);
-    Y.customPlot_calibrated_acc->graph(0)->addData(CAY.x,CAY.y);
-    Z.customPlot_calibrated_acc->graph(0)->addData(CAZ.x,CAZ.y);
-
-    X.customPlot_acc->graph(1)->addData(CAX.x,CAX.y);
-    Y.customPlot_acc->graph(1)->addData(CAY.x,CAY.y);
-    Z.customPlot_acc->graph(1)->addData(CAZ.x,CAZ.y);
+    X.customPlot_calibrated_acc->graph(1)->addData(x_axis,X.filtered_calibrated_ACC);
+    Y.customPlot_calibrated_acc->graph(1)->addData(x_axis,Y.filtered_calibrated_ACC);
+    Z.customPlot_calibrated_acc->graph(1)->addData(x_axis,Z.filtered_calibrated_ACC);
     counter++;
 
     X.customPlot_gyro->graph(0)->rescaleValueAxis(false,true);
