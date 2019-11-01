@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1108</width>
-    <height>730</height>
+    <width>1022</width>
+    <height>796</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,425 +26,796 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label_gyro_x">
+   <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>200</width>
-      <height>30</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1011</width>
+      <height>791</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+     <string notr="true">QTabBar::tab { height: 50px; width: 200px}
+</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>GYRO ANALYSIS</string>
+     </attribute>
+     <widget class="QLabel" name="label_fir_gyro_y">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>260</y>
+        <width>141</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>GYRO X AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_gyro_x" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_gyro_y">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>250</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>FIR Y :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_filtered_gyro_z" native="true">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>530</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_y" native="true">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>290</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_offset_gyro_z">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>530</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Take OFFSET</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_z">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>500</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>GYRO Y AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_gyro_y" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_gyro_z">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>490</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>GYRO Z AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_z" native="true">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>530</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_filtered_gyro_z">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>500</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>GYRO Z AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_gyro_z" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>520</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_acc_x">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>10</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>Filtered GYRO Z</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_filtered_gyro_y" native="true">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>290</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_fir_gyro_z">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>500</y>
+        <width>141</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>ACC X AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_acc_z">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>490</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>FIR Z :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_y">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>260</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>ACC Z AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_acc_z" native="true">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>520</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_acc_x" native="true">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>40</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_acc_y">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>250</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>GYRO Y AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_x">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>ACC Y AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_acc_y" native="true">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>280</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_mag_y">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>250</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>GYRO X AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_offset_gyro_y">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>290</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Take OFFSET</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_x" native="true">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_filtered_gyro_x">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>20</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>MAG Y AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_mag_z" native="true">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>520</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_mag_x">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>10</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>Filtered GYRO X</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_offset_gyro_x">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>50</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Take OFFSET</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_filtered_gyro_y">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>260</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>MAG X AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_mag_y" native="true">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>280</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_mag_x" native="true">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>40</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_mag_z">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>490</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>Filtered GYRO Y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_fir_gyro_x">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>20</y>
+        <width>141</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>MAG Z AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_calibrated_acc_x" native="true">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>40</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_calibrated_acc_z" native="true">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>520</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_calibrated_acc_z">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>490</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>FIR X :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_filtered_gyro_x" native="true">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>50</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_dps_z" native="true">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>530</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_dps_y">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>260</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>Calibrated ACC Z AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QWidget" name="plot_calibrated_acc_y" native="true">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>280</y>
-      <width>200</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_calibrated_acc_x">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>10</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>DPS Y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_dps_x" native="true">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>50</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_dps_y" native="true">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>290</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_dps_x">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>20</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>Calibrated ACC X AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_calibrated_acc_y">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>250</y>
-      <width>200</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 0);
+      </property>
+      <property name="text">
+       <string>DPS X</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_dps_z">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>500</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
 background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-    </property>
-    <property name="text">
-     <string>Calibrated ACC Y AXIS</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
+      </property>
+      <property name="text">
+       <string>DPS Z</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_angle_y" native="true">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>290</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_angle_z">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>500</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>ANGLE Z</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_angle_x" native="true">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>50</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_angle_x">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>20</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>ANGLE X</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_gyro_angle_y">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>260</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>ANGLE Y</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_gyro_angle_z" native="true">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>530</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>UNNECESSARY</string>
+     </attribute>
+     <widget class="QWidget" name="plot_acc_y" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>280</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_acc_z" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>520</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_mag_z">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>490</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>MAG Z AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_mag_y">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>250</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>MAG Y AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_mag_z" native="true">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>520</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_acc_x" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_acc_y">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>250</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>ACC Y AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_mag_x">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>10</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>MAG X AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_mag_x" native="true">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>40</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QWidget" name="plot_mag_y" native="true">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>280</y>
+        <width>200</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_acc_z">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>490</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>ACC Z AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_acc_x">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 0);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
+      </property>
+      <property name="text">
+       <string>ACC X AXIS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>

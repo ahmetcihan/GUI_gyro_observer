@@ -34,8 +34,14 @@ public:
     void initilize_plot(void);
     void plot_graph(void);
 
+    static double classic_MA(double raw_signal, u8 filter_coefficient, double running_average[]);
     void butterworth_filter_coeffs(double *by_1, double *by_0, double *ax_0, double *ax_1, double *ax_2);
     static double butterworth_filter(double input,double by_1,double by_0,double ax_0,double ax_1,double ax_2,double xv[3],double yv[3]);
+
+    double (*classic_MA_x)(double,u8,double*);
+    double (*classic_MA_y)(double,u8,double*);
+    double (*classic_MA_z)(double,u8,double*);
+
     double (*filter_x)(double ,double ,double ,double ,double ,double,double* ,double*);
     double (*filter_y)(double ,double ,double ,double ,double ,double,double* ,double*);
     double (*filter_z)(double ,double ,double ,double ,double ,double,double* ,double*);
@@ -49,19 +55,26 @@ public:
         QCustomPlot *customPlot_gyro;
         QCustomPlot *customPlot_acc;
         QCustomPlot *customPlot_mag;
-        QCustomPlot *customPlot_calibrated_acc;
+        QCustomPlot *customPlot_filtered_gyro;
+        QCustomPlot *customPlot_gyro_dps;
         int GYRO;
         int ACC;
         int MAG;
-        double calibrated_ACC;
-        double filtered_calibrated_ACC;
+        double filtered_GYRO;
+        double secondary_filtered_GYRO;
+        double dps_gyro;
+        double running_average_array[64];
         double ax_0,ax_1,by_0,by_1,by_2,xv[3],yv[3];
+        double offset;
     };
     _axes X,Y,Z;
 
 public slots:
     void serial_request_sender(void);
     void serial_response_handler(void);
+    void take_offset_gyro_x(void);
+    void take_offset_gyro_y(void);
+    void take_offset_gyro_z(void);
 
 private:
     void closeEvent(QCloseEvent *event);

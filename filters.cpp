@@ -24,3 +24,17 @@ double MainWindow::butterworth_filter(double input,double by_1,double by_0,doubl
 
     return yv[0];
 }
+double MainWindow::classic_MA(double raw_signal,u8 filter_coefficient, double running_average[64]){
+    double processed_value;
+    u8 j;
+
+    running_average[filter_coefficient-1] = raw_signal;
+    processed_value = raw_signal;
+    for (j = 0; j < (filter_coefficient-1); j++){
+        processed_value += running_average[j];
+        running_average[j] = running_average[j+1];
+    }
+    processed_value = (processed_value)/(filter_coefficient);
+
+    return processed_value;
+}
