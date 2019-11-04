@@ -98,6 +98,31 @@ void MainWindow::serial_response_handler(void){
             Y.dps_gyro = (double)((double) Y.GYRO * 8.75)/1000;
             Z.dps_gyro = (double)((double) Z.GYRO * 8.75)/1000;
 
+            if(X.offset_status == true){
+                if(abs(X.dps_gyro) > 1){
+                    X.dps_angle = X.dps_angle + X.dps_gyro/100;
+                }
+            }
+            else{
+                X.dps_angle = 0;
+            }
+            if(Y.offset_status == true){
+                if(abs(Y.dps_gyro) > 1){
+                    Y.dps_angle = Y.dps_angle + Y.dps_gyro/100;
+                }
+            }
+            else{
+                Y.dps_angle = 0;
+            }
+            if(Z.offset_status == true){
+                if(abs(Z.dps_gyro) > 1){
+                    Z.dps_angle = Z.dps_angle + Z.dps_gyro/100;
+                }
+            }
+            else{
+                Z.dps_angle = 0;
+            }
+
             X.filtered_GYRO = filter_x(X.GYRO, X.ax_0, X.ax_1, X.by_0, X.by_1, X.by_2,X.xv,X.yv);
             Y.filtered_GYRO = filter_y(Y.GYRO, Y.ax_0, Y.ax_1, Y.by_0, Y.by_1, Y.by_2,Y.xv,Y.yv);
             Z.filtered_GYRO = filter_z(Z.GYRO, Z.ax_0, Z.ax_1, Z.by_0, Z.by_1, Z.by_2,Z.xv,Z.yv);
@@ -139,10 +164,13 @@ void MainWindow::serial_response_handler(void){
             graph_page->ui->label_calibrated_mag_y->setText(QString::number(graph_page->calibrated[7]));
             graph_page->ui->label_calibrated_mag_z->setText(QString::number(graph_page->calibrated[8]));
 
-
             ui->label_fir_gyro_x->setText("Fir X : " + QString::number(X.secondary_filtered_GYRO));
             ui->label_fir_gyro_y->setText("Fir Y : " + QString::number(Y.secondary_filtered_GYRO));
             ui->label_fir_gyro_z->setText("Fir Z : " + QString::number(Z.secondary_filtered_GYRO));
+
+            ui->label_gyro_dps_x->setText("DPS X : " + QString::number(X.dps_gyro));
+            ui->label_gyro_dps_y->setText("DPS Y : " + QString::number(Y.dps_gyro));
+            ui->label_gyro_dps_z->setText("DPS Z : " + QString::number(Z.dps_gyro));
 
             plot_graph();
         }

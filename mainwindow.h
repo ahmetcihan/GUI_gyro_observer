@@ -57,15 +57,18 @@ public:
         QCustomPlot *customPlot_mag;
         QCustomPlot *customPlot_filtered_gyro;
         QCustomPlot *customPlot_gyro_dps;
+        QCustomPlot *customPlot_gyro_angle;
         int GYRO;
         int ACC;
         int MAG;
         double filtered_GYRO;
         double secondary_filtered_GYRO;
         double dps_gyro;
+        double dps_angle;
         double running_average_array[64];
         double ax_0,ax_1,by_0,by_1,by_2,xv[3],yv[3];
         double offset;
+        bool offset_status;
     };
     _axes X,Y,Z;
 

@@ -58,15 +58,24 @@ MainWindow::MainWindow(QWidget *parent) :
     X.offset = 0;
     Y.offset = 0;
     Z.offset = 0;
+    X.offset_status = false;
+    Y.offset_status = false;
+    Z.offset_status = false;
 }
 void MainWindow::take_offset_gyro_x(){
     X.offset = X.secondary_filtered_GYRO;
+    X.dps_angle = 0;
+    X.offset_status = true;
 }
 void MainWindow::take_offset_gyro_y(){
     Y.offset = Y.secondary_filtered_GYRO;
+    Y.dps_angle = 0;
+    Y.offset_status = true;
 }
 void MainWindow::take_offset_gyro_z(){
     Z.offset = Z.secondary_filtered_GYRO;
+    Z.dps_angle = 0;
+    Z.offset_status = true;
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){

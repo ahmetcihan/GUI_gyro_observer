@@ -18,6 +18,9 @@ void MainWindow::initilize_plot(void){
     X.customPlot_gyro_dps = new QCustomPlot(this->ui->plot_gyro_dps_x);
     Y.customPlot_gyro_dps = new QCustomPlot(this->ui->plot_gyro_dps_y);
     Z.customPlot_gyro_dps = new QCustomPlot(this->ui->plot_gyro_dps_z);
+    X.customPlot_gyro_angle = new QCustomPlot(this->ui->plot_gyro_angle_x);
+    Y.customPlot_gyro_angle = new QCustomPlot(this->ui->plot_gyro_angle_y);
+    Z.customPlot_gyro_angle = new QCustomPlot(this->ui->plot_gyro_angle_z);
 
     // create graph and assign data to it:
     X.customPlot_gyro->addGraph();
@@ -35,6 +38,9 @@ void MainWindow::initilize_plot(void){
     X.customPlot_gyro_dps->addGraph();
     Y.customPlot_gyro_dps->addGraph();
     Z.customPlot_gyro_dps->addGraph();
+    X.customPlot_gyro_angle->addGraph();
+    Y.customPlot_gyro_angle->addGraph();
+    Z.customPlot_gyro_angle->addGraph();
 
     //X.customPlot_gyro->xAxis->setTickLabelRotation(-90);
 
@@ -71,6 +77,9 @@ void MainWindow::initilize_plot(void){
     X.customPlot_gyro_dps->setGeometry(0,0,ui->plot_gyro_dps_x->width(),ui->plot_gyro_dps_x->height());
     Y.customPlot_gyro_dps->setGeometry(0,0,ui->plot_gyro_dps_y->width(),ui->plot_gyro_dps_y->height());
     Z.customPlot_gyro_dps->setGeometry(0,0,ui->plot_gyro_dps_z->width(),ui->plot_gyro_dps_z->height());
+    X.customPlot_gyro_angle->setGeometry(0,0,ui->plot_gyro_angle_x->width(),ui->plot_gyro_angle_x->height());
+    Y.customPlot_gyro_angle->setGeometry(0,0,ui->plot_gyro_angle_y->width(),ui->plot_gyro_angle_y->height());
+    Z.customPlot_gyro_angle->setGeometry(0,0,ui->plot_gyro_angle_z->width(),ui->plot_gyro_angle_z->height());
 
     // give the axes some labels:
     //X.customPlot_gyro->yAxis->setLabel("X AXIS");
@@ -89,6 +98,9 @@ void MainWindow::initilize_plot(void){
     X.customPlot_gyro_dps->xAxis->setLabel("TIME (s)");
     Y.customPlot_gyro_dps->xAxis->setLabel("TIME (s)");
     Z.customPlot_gyro_dps->xAxis->setLabel("TIME (s)");
+    X.customPlot_gyro_angle->xAxis->setLabel("TIME (s)");
+    Y.customPlot_gyro_angle->xAxis->setLabel("TIME (s)");
+    Z.customPlot_gyro_angle->xAxis->setLabel("TIME (s)");
 
 }
 void MainWindow::plot_graph(void){
@@ -103,10 +115,13 @@ void MainWindow::plot_graph(void){
     }
     x_axis = (double)graph_time.elapsed() / 1000;
 
+    X.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+    Y.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+    Z.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
     if(x_axis < 10){
-        X.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
-        Y.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
-        Z.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+//        X.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+//        Y.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+//        Z.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
         X.customPlot_acc->xAxis->setRange(0,x_axis + 1);
         Y.customPlot_acc->xAxis->setRange(0,x_axis + 1);
         Z.customPlot_acc->xAxis->setRange(0,x_axis + 1);
@@ -119,11 +134,14 @@ void MainWindow::plot_graph(void){
         X.customPlot_gyro_dps->xAxis->setRange(0,x_axis + 1);
         Y.customPlot_gyro_dps->xAxis->setRange(0,x_axis + 1);
         Z.customPlot_gyro_dps->xAxis->setRange(0,x_axis + 1);
+        X.customPlot_gyro_angle->xAxis->setRange(0,x_axis + 1);
+        Y.customPlot_gyro_angle->xAxis->setRange(0,x_axis + 1);
+        Z.customPlot_gyro_angle->xAxis->setRange(0,x_axis + 1);
     }
     else{
-        X.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
-        Y.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
-        Z.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+//        X.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+//        Y.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+//        Z.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
         X.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
         Y.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
         Z.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
@@ -136,6 +154,9 @@ void MainWindow::plot_graph(void){
         X.customPlot_gyro_dps->xAxis->setRange(x_axis - 10,x_axis + 1);
         Y.customPlot_gyro_dps->xAxis->setRange(x_axis - 10,x_axis + 1);
         Z.customPlot_gyro_dps->xAxis->setRange(x_axis - 10,x_axis + 1);
+        X.customPlot_gyro_angle->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Y.customPlot_gyro_angle->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Z.customPlot_gyro_angle->xAxis->setRange(x_axis - 10,x_axis + 1);
     }
 
     X.customPlot_gyro->graph(0)->addData(x_axis,X.GYRO);
@@ -156,6 +177,9 @@ void MainWindow::plot_graph(void){
     X.customPlot_gyro_dps->graph(0)->addData(x_axis,X.dps_gyro);
     Y.customPlot_gyro_dps->graph(0)->addData(x_axis,Y.dps_gyro);
     Z.customPlot_gyro_dps->graph(0)->addData(x_axis,Z.dps_gyro);
+    X.customPlot_gyro_angle->graph(0)->addData(x_axis,X.dps_angle);
+    Y.customPlot_gyro_angle->graph(0)->addData(x_axis,Y.dps_angle);
+    Z.customPlot_gyro_angle->graph(0)->addData(x_axis,Z.dps_angle);
 
     counter++;
 
@@ -174,6 +198,9 @@ void MainWindow::plot_graph(void){
     X.customPlot_gyro_dps->graph(0)->rescaleValueAxis(false,true);
     Y.customPlot_gyro_dps->graph(0)->rescaleValueAxis(false,true);
     Z.customPlot_gyro_dps->graph(0)->rescaleValueAxis(false,true);
+    X.customPlot_gyro_angle->graph(0)->rescaleValueAxis(false,true);
+    Y.customPlot_gyro_angle->graph(0)->rescaleValueAxis(false,true);
+    Z.customPlot_gyro_angle->graph(0)->rescaleValueAxis(false,true);
 
     X.customPlot_gyro->replot();
     Y.customPlot_gyro->replot();
@@ -190,6 +217,9 @@ void MainWindow::plot_graph(void){
     X.customPlot_gyro_dps->replot();
     Y.customPlot_gyro_dps->replot();
     Z.customPlot_gyro_dps->replot();
+    X.customPlot_gyro_angle->replot();
+    Y.customPlot_gyro_angle->replot();
+    Z.customPlot_gyro_angle->replot();
 
 }
 

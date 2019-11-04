@@ -8,7 +8,7 @@ QT       += core gui serialport network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
-TARGET = laser_controller
+TARGET = gyro_observer
 TEMPLATE = app
 
 
