@@ -73,7 +73,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>FIR Y :</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_filtered_gyro_z" native="true">
@@ -136,7 +136,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>GYRO Z AXIS</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_gyro_z" native="true">
@@ -171,7 +171,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>Filtered GYRO Z</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_filtered_gyro_y" native="true">
@@ -206,7 +206,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>FIR Z :</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_gyro_y">
@@ -231,7 +231,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>GYRO Y AXIS</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_gyro_x">
@@ -256,7 +256,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>GYRO X AXIS</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_offset_gyro_y">
@@ -309,7 +309,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>Filtered GYRO X</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_offset_gyro_x">
@@ -352,7 +352,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>Filtered GYRO Y</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_fir_gyro_x">
@@ -377,7 +377,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>FIR X :</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_filtered_gyro_x" native="true">
@@ -422,7 +422,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>DPS Y</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_gyro_dps_x" native="true">
@@ -467,7 +467,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>DPS X</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_gyro_dps_z">
@@ -492,7 +492,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>DPS Z</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_gyro_angle_y" native="true">
@@ -527,7 +527,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>ANGLE Z</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_gyro_angle_x" native="true">
@@ -562,7 +562,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>ANGLE X</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_gyro_angle_y">
@@ -587,7 +587,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <string>ANGLE Y</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_gyro_angle_z" native="true">

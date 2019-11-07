@@ -90,34 +90,25 @@ void MainWindow::serial_response_handler(void){
             if(Z.GYRO > 0x7FFF){
                 Z.GYRO = Z.GYRO - 0xFFFF + 1;
             }
-            X.GYRO = X.GYRO - X.offset;
-            Y.GYRO = Y.GYRO - Y.offset;
-            Z.GYRO = Z.GYRO - Z.offset;
 
-            X.dps_gyro = (double)((double) X.GYRO * 8.75)/1000;
-            Y.dps_gyro = (double)((double) Y.GYRO * 8.75)/1000;
-            Z.dps_gyro = (double)((double) Z.GYRO * 8.75)/1000;
+            X.dps_gyro = (double)((double) (X.GYRO - X.offset) * 8.75)/1000; // mdps/digit
+            Y.dps_gyro = (double)((double) (Y.GYRO - Y.offset) * 8.75)/1000;
+            Z.dps_gyro = (double)((double) (Z.GYRO - Z.offset) * 8.75)/1000;
 
             if(X.offset_status == true){
-                if(abs(X.dps_gyro) > 1){
-                    X.dps_angle = X.dps_angle + X.dps_gyro/100;
-                }
+                X.dps_angle = X.dps_angle + X.dps_gyro;
             }
             else{
                 X.dps_angle = 0;
             }
             if(Y.offset_status == true){
-                if(abs(Y.dps_gyro) > 1){
-                    Y.dps_angle = Y.dps_angle + Y.dps_gyro/100;
-                }
+                Y.dps_angle = Y.dps_angle + Y.dps_gyro;
             }
             else{
                 Y.dps_angle = 0;
             }
             if(Z.offset_status == true){
-                if(abs(Z.dps_gyro) > 1){
-                    Z.dps_angle = Z.dps_angle + Z.dps_gyro/100;
-                }
+                Z.dps_angle = Z.dps_angle + Z.dps_gyro;
             }
             else{
                 Z.dps_angle = 0;
@@ -131,6 +122,26 @@ void MainWindow::serial_response_handler(void){
             Y.secondary_filtered_GYRO = classic_MA_y(Y.filtered_GYRO, 32, Y.running_average_array);
             Z.secondary_filtered_GYRO = classic_MA_z(Z.filtered_GYRO, 32, Z.running_average_array);
 
+            graph_page->calibrated[0] = (double) (X.dps_angle - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
+            graph_page->calibrated[1] = (double) (Y.dps_angle - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];
+            graph_page->calibrated[2] = (double) (Z.dps_angle - graph_page->ui->doubleSpinBox_gyro_z_zero->value()) * graph_page->slope[2];
+//            graph_page->calibrated[3] = (double) (X.ACC - graph_page->ui->doubleSpinBox_acc_x_zero->value()) * graph_page->slope[3];
+//            graph_page->calibrated[4] = (double) (Y.ACC - graph_page->ui->doubleSpinBox_acc_y_zero->value()) * graph_page->slope[4];
+//            graph_page->calibrated[5] = (double) (Z.ACC - graph_page->ui->doubleSpinBox_acc_z_zero->value()) * graph_page->slope[5];
+//            graph_page->calibrated[6] = (double) (X.MAG - graph_page->ui->doubleSpinBox_mag_x_zero->value()) * graph_page->slope[6];
+//            graph_page->calibrated[7] = (double) (Y.MAG - graph_page->ui->doubleSpinBox_mag_y_zero->value()) * graph_page->slope[7];
+//            graph_page->calibrated[8] = (double) (Z.MAG - graph_page->ui->doubleSpinBox_mag_z_zero->value()) * graph_page->slope[8];
+
+            graph_page->ui->label_calibrated_gyro_x->setText(QString::number(graph_page->calibrated[0]));
+            graph_page->ui->label_calibrated_gyro_y->setText(QString::number(graph_page->calibrated[1]));
+            graph_page->ui->label_calibrated_gyro_z->setText(QString::number(graph_page->calibrated[2]));
+//            graph_page->ui->label_calibrated_acc_x->setText(QString::number(graph_page->calibrated[3]));
+//            graph_page->ui->label_calibrated_acc_y->setText(QString::number(graph_page->calibrated[4]));
+//            graph_page->ui->label_calibrated_acc_z->setText(QString::number(graph_page->calibrated[5]));
+//            graph_page->ui->label_calibrated_mag_x->setText(QString::number(graph_page->calibrated[6]));
+//            graph_page->ui->label_calibrated_mag_y->setText(QString::number(graph_page->calibrated[7]));
+//            graph_page->ui->label_calibrated_mag_z->setText(QString::number(graph_page->calibrated[8]));
+
             ui->label_gyro_x->setText("GYRO X : " + QString::number(X.GYRO));
             ui->label_gyro_y->setText("GYRO Y : " + QString::number(Y.GYRO));
             ui->label_gyro_z->setText("GYRO Z : " + QString::number(Z.GYRO));
@@ -143,26 +154,6 @@ void MainWindow::serial_response_handler(void){
             ui->label_filtered_gyro_x->setText("Filtered GYRO X : " + QString::number(X.filtered_GYRO));
             ui->label_filtered_gyro_y->setText("Filtered GYRO Y : " + QString::number(Y.filtered_GYRO));
             ui->label_filtered_gyro_z->setText("Filtered GYRO Z : " + QString::number(Z.filtered_GYRO));
-
-            graph_page->calibrated[0] = (double) (X.GYRO - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
-            graph_page->calibrated[1] = (double) (Y.GYRO - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];
-            graph_page->calibrated[2] = (double) (Z.GYRO - graph_page->ui->doubleSpinBox_gyro_z_zero->value()) * graph_page->slope[2];
-            graph_page->calibrated[3] = (double) (X.ACC - graph_page->ui->doubleSpinBox_acc_x_zero->value()) * graph_page->slope[3];
-            graph_page->calibrated[4] = (double) (Y.ACC - graph_page->ui->doubleSpinBox_acc_y_zero->value()) * graph_page->slope[4];
-            graph_page->calibrated[5] = (double) (Z.ACC - graph_page->ui->doubleSpinBox_acc_z_zero->value()) * graph_page->slope[5];
-            graph_page->calibrated[6] = (double) (X.MAG - graph_page->ui->doubleSpinBox_mag_x_zero->value()) * graph_page->slope[6];
-            graph_page->calibrated[7] = (double) (Y.MAG - graph_page->ui->doubleSpinBox_mag_y_zero->value()) * graph_page->slope[7];
-            graph_page->calibrated[8] = (double) (Z.MAG - graph_page->ui->doubleSpinBox_mag_z_zero->value()) * graph_page->slope[8];
-
-            graph_page->ui->label_calibrated_gyro_x->setText(QString::number(graph_page->calibrated[0]));
-            graph_page->ui->label_calibrated_gyro_y->setText(QString::number(graph_page->calibrated[1]));
-            graph_page->ui->label_calibrated_gyro_z->setText(QString::number(graph_page->calibrated[2]));
-            graph_page->ui->label_calibrated_acc_x->setText(QString::number(graph_page->calibrated[3]));
-            graph_page->ui->label_calibrated_acc_y->setText(QString::number(graph_page->calibrated[4]));
-            graph_page->ui->label_calibrated_acc_z->setText(QString::number(graph_page->calibrated[5]));
-            graph_page->ui->label_calibrated_mag_x->setText(QString::number(graph_page->calibrated[6]));
-            graph_page->ui->label_calibrated_mag_y->setText(QString::number(graph_page->calibrated[7]));
-            graph_page->ui->label_calibrated_mag_z->setText(QString::number(graph_page->calibrated[8]));
 
             ui->label_fir_gyro_x->setText("Fir X : " + QString::number(X.secondary_filtered_GYRO));
             ui->label_fir_gyro_y->setText("Fir Y : " + QString::number(Y.secondary_filtered_GYRO));

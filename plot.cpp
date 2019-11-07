@@ -115,13 +115,10 @@ void MainWindow::plot_graph(void){
     }
     x_axis = (double)graph_time.elapsed() / 1000;
 
-    X.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
-    Y.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
-    Z.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
     if(x_axis < 10){
-//        X.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
-//        Y.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
-//        Z.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+        X.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+        Y.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
+        Z.customPlot_gyro->xAxis->setRange(0,x_axis + 1);
         X.customPlot_acc->xAxis->setRange(0,x_axis + 1);
         Y.customPlot_acc->xAxis->setRange(0,x_axis + 1);
         Z.customPlot_acc->xAxis->setRange(0,x_axis + 1);
@@ -139,9 +136,9 @@ void MainWindow::plot_graph(void){
         Z.customPlot_gyro_angle->xAxis->setRange(0,x_axis + 1);
     }
     else{
-//        X.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
-//        Y.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
-//        Z.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+        X.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Y.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
+        Z.customPlot_gyro->xAxis->setRange(x_axis - 10,x_axis + 1);
         X.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
         Y.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);
         Z.customPlot_acc->xAxis->setRange(x_axis - 10,x_axis + 1);

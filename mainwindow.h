@@ -67,7 +67,7 @@ public:
         double dps_angle;
         double running_average_array[64];
         double ax_0,ax_1,by_0,by_1,by_2,xv[3],yv[3];
-        double offset;
+        int offset;
         bool offset_status;
     };
     _axes X,Y,Z;
