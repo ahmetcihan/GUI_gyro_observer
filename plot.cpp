@@ -48,19 +48,19 @@ void MainWindow::initilize_plot(void){
     Y.customPlot_filtered_gyro->graph(0)->setPen(QPen(Qt::blue));
     Z.customPlot_filtered_gyro->graph(0)->setPen(QPen(Qt::blue));
 
-    X.customPlot_filtered_gyro->addGraph();
-    Y.customPlot_filtered_gyro->addGraph();
-    Z.customPlot_filtered_gyro->addGraph();
+//    X.customPlot_filtered_gyro->addGraph();
+//    Y.customPlot_filtered_gyro->addGraph();
+//    Z.customPlot_filtered_gyro->addGraph();
 
-    X.customPlot_filtered_gyro->graph(1)->setPen(QPen(Qt::red));
-    Y.customPlot_filtered_gyro->graph(1)->setPen(QPen(Qt::red));
-    Z.customPlot_filtered_gyro->graph(1)->setPen(QPen(Qt::red));
-    X.customPlot_filtered_gyro->graph(1)->setLineStyle(QCPGraph::lsLine);
-    Y.customPlot_filtered_gyro->graph(1)->setLineStyle(QCPGraph::lsLine);
-    Z.customPlot_filtered_gyro->graph(1)->setLineStyle(QCPGraph::lsLine);
-    X.customPlot_filtered_gyro->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
-    Y.customPlot_filtered_gyro->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
-    Z.customPlot_filtered_gyro->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+//    X.customPlot_filtered_gyro->graph(1)->setPen(QPen(Qt::red));
+//    Y.customPlot_filtered_gyro->graph(1)->setPen(QPen(Qt::red));
+//    Z.customPlot_filtered_gyro->graph(1)->setPen(QPen(Qt::red));
+//    X.customPlot_filtered_gyro->graph(1)->setLineStyle(QCPGraph::lsLine);
+//    Y.customPlot_filtered_gyro->graph(1)->setLineStyle(QCPGraph::lsLine);
+//    Z.customPlot_filtered_gyro->graph(1)->setLineStyle(QCPGraph::lsLine);
+//    X.customPlot_filtered_gyro->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+//    Y.customPlot_filtered_gyro->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+//    Z.customPlot_filtered_gyro->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
 
     X.customPlot_gyro->setGeometry(0,0,ui->plot_gyro_x->width(),ui->plot_gyro_x->height());
     Y.customPlot_gyro->setGeometry(0,0,ui->plot_gyro_y->width(),ui->plot_gyro_y->height());
@@ -168,9 +168,6 @@ void MainWindow::plot_graph(void){
     X.customPlot_filtered_gyro->graph(0)->addData(x_axis,X.filtered_GYRO);
     Y.customPlot_filtered_gyro->graph(0)->addData(x_axis,Y.filtered_GYRO);
     Z.customPlot_filtered_gyro->graph(0)->addData(x_axis,Z.filtered_GYRO);
-    X.customPlot_filtered_gyro->graph(1)->addData(x_axis,X.secondary_filtered_GYRO);
-    Y.customPlot_filtered_gyro->graph(1)->addData(x_axis,Y.secondary_filtered_GYRO);
-    Z.customPlot_filtered_gyro->graph(1)->addData(x_axis,Z.secondary_filtered_GYRO);
     X.customPlot_gyro_dps->graph(0)->addData(x_axis,X.dps_gyro);
     Y.customPlot_gyro_dps->graph(0)->addData(x_axis,Y.dps_gyro);
     Z.customPlot_gyro_dps->graph(0)->addData(x_axis,Z.dps_gyro);

@@ -118,10 +118,6 @@ void MainWindow::serial_response_handler(void){
             Y.filtered_GYRO = filter_y(Y.GYRO, Y.ax_0, Y.ax_1, Y.by_0, Y.by_1, Y.by_2,Y.xv,Y.yv);
             Z.filtered_GYRO = filter_z(Z.GYRO, Z.ax_0, Z.ax_1, Z.by_0, Z.by_1, Z.by_2,Z.xv,Z.yv);
 
-            X.secondary_filtered_GYRO = classic_MA_x(X.filtered_GYRO, 32, X.running_average_array);
-            Y.secondary_filtered_GYRO = classic_MA_y(Y.filtered_GYRO, 32, Y.running_average_array);
-            Z.secondary_filtered_GYRO = classic_MA_z(Z.filtered_GYRO, 32, Z.running_average_array);
-
             graph_page->calibrated[0] = (double) (X.dps_angle - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
             graph_page->calibrated[1] = (double) (Y.dps_angle - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];
             graph_page->calibrated[2] = (double) (Z.dps_angle - graph_page->ui->doubleSpinBox_gyro_z_zero->value()) * graph_page->slope[2];
@@ -151,13 +147,9 @@ void MainWindow::serial_response_handler(void){
             ui->label_mag_x->setText("MAG X : " + QString::number(X.MAG));
             ui->label_mag_y->setText("MAG Y : " + QString::number(Y.MAG));
             ui->label_mag_z->setText("MAG Z : " + QString::number(Z.MAG));
-            ui->label_filtered_gyro_x->setText("Filtered GYRO X : " + QString::number(X.filtered_GYRO));
-            ui->label_filtered_gyro_y->setText("Filtered GYRO Y : " + QString::number(Y.filtered_GYRO));
-            ui->label_filtered_gyro_z->setText("Filtered GYRO Z : " + QString::number(Z.filtered_GYRO));
-
-            ui->label_fir_gyro_x->setText("Fir X : " + QString::number(X.secondary_filtered_GYRO));
-            ui->label_fir_gyro_y->setText("Fir Y : " + QString::number(Y.secondary_filtered_GYRO));
-            ui->label_fir_gyro_z->setText("Fir Z : " + QString::number(Z.secondary_filtered_GYRO));
+            ui->label_filtered_gyro_x->setText("LPF GYRO X : " + QString::number(X.filtered_GYRO));
+            ui->label_filtered_gyro_y->setText("LPF GYRO Y : " + QString::number(Y.filtered_GYRO));
+            ui->label_filtered_gyro_z->setText("LPF GYRO Z : " + QString::number(Z.filtered_GYRO));
 
             ui->label_gyro_dps_x->setText("DPS X : " + QString::number(X.dps_gyro));
             ui->label_gyro_dps_y->setText("DPS Y : " + QString::number(Y.dps_gyro));

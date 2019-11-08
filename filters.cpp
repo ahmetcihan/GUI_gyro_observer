@@ -2,7 +2,7 @@
 
 void MainWindow::butterworth_filter_coeffs(double *by_1,double *by_0,double *ax_0,double *ax_1,double *ax_2){
     double samplerate = 200;
-    double cutoff = 5;
+    double cutoff = 1;
     double w_d  = (2.0 * M_PI * cutoff)/(samplerate);
     double alpha = qTan(w_d/2);
     double k = (alpha*alpha) / (1.0 + M_SQRT2*alpha + alpha*alpha);

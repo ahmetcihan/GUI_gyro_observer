@@ -62,7 +62,6 @@ public:
         int ACC;
         int MAG;
         double filtered_GYRO;
-        double secondary_filtered_GYRO;
         double dps_gyro;
         double dps_angle;
         double running_average_array[64];

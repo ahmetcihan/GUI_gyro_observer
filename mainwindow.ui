@@ -51,31 +51,6 @@
      <attribute name="title">
       <string>GYRO ANALYSIS</string>
      </attribute>
-     <widget class="QLabel" name="label_fir_gyro_y">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>260</y>
-        <width>141</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 0);
-background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-      </property>
-      <property name="text">
-       <string>FIR Y :</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
      <widget class="QWidget" name="plot_filtered_gyro_z" native="true">
       <property name="geometry">
        <rect>
@@ -182,31 +157,6 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
         <width>200</width>
         <height>200</height>
        </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_fir_gyro_z">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>500</y>
-        <width>141</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 0);
-background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-      </property>
-      <property name="text">
-       <string>FIR Z :</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_gyro_y">
@@ -350,31 +300,6 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
       </property>
       <property name="text">
        <string>Filtered GYRO Y</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_fir_gyro_x">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>20</y>
-        <width>141</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 0);
-background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-      </property>
-      <property name="text">
-       <string>FIR X :</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
