@@ -71,24 +71,6 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_offset_gyro_z">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>530</y>
-        <width>141</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Take OFFSET</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_gyro_z">
       <property name="geometry">
        <rect>
@@ -209,24 +191,6 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_offset_gyro_y">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>290</y>
-        <width>141</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Take OFFSET</string>
-      </property>
-     </widget>
      <widget class="QWidget" name="plot_gyro_x" native="true">
       <property name="geometry">
        <rect>
@@ -262,24 +226,6 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_offset_gyro_x">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>50</y>
-        <width>141</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Take OFFSET</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_lpf_gyro_y">
       <property name="geometry">
        <rect>
@@ -313,111 +259,6 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0,
         <width>200</width>
         <height>200</height>
        </rect>
-      </property>
-     </widget>
-     <widget class="QWidget" name="plot_gyro_dps_z" native="true">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>530</y>
-        <width>200</width>
-        <height>200</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_gyro_dps_y">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>260</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 0);
-background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-      </property>
-      <property name="text">
-       <string>DPS Y</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-     <widget class="QWidget" name="plot_gyro_dps_x" native="true">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>50</y>
-        <width>200</width>
-        <height>200</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QWidget" name="plot_gyro_dps_y" native="true">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>290</y>
-        <width>200</width>
-        <height>200</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_gyro_dps_x">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>20</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 0);
-background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-      </property>
-      <property name="text">
-       <string>DPS X</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_gyro_dps_z">
-      <property name="geometry">
-       <rect>
-        <x>800</x>
-        <y>500</y>
-        <width>200</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 0);
-background-color: qlineargradient(spread:pad, x1:0, y1:0.0170455, x2:0.99, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(131, 131, 131, 255));</string>
-      </property>
-      <property name="text">
-       <string>DPS Z</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QWidget" name="plot_hpf_gyro_z" native="true">

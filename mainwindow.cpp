@@ -40,10 +40,6 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     }
 
-    connect(this->ui->pushButton_offset_gyro_x,SIGNAL(clicked()),this,SLOT(take_offset_gyro_x()));
-    connect(this->ui->pushButton_offset_gyro_y,SIGNAL(clicked()),this,SLOT(take_offset_gyro_y()));
-    connect(this->ui->pushButton_offset_gyro_z,SIGNAL(clicked()),this,SLOT(take_offset_gyro_z()));
-
     butterworth_lpf_coeffs(X.lpf.a, X.lpf.b);
     butterworth_lpf_coeffs(Y.lpf.a, Y.lpf.b);
     butterworth_lpf_coeffs(Z.lpf.a, Z.lpf.b);
@@ -62,29 +58,7 @@ MainWindow::MainWindow(QWidget *parent) :
     classic_MA_x = &classic_MA;
     classic_MA_y = &classic_MA;
     classic_MA_z = &classic_MA;
-    X.offset = 0;
-    Y.offset = 0;
-    Z.offset = 0;
-    X.offset_status = false;
-    Y.offset_status = false;
-    Z.offset_status = false;
 }
-void MainWindow::take_offset_gyro_x(){
-    X.offset = X.lpf.GYRO;
-    X.dps_angle = 0;
-    X.offset_status = true;
-}
-void MainWindow::take_offset_gyro_y(){
-    Y.offset = Y.lpf.GYRO;
-    Y.dps_angle = 0;
-    Y.offset_status = true;
-}
-void MainWindow::take_offset_gyro_z(){
-    Z.offset = Z.lpf.GYRO;
-    Z.dps_angle = 0;
-    Z.offset_status = true;
-}
-
 void MainWindow::closeEvent(QCloseEvent *event){
     graph_page->close();
 }

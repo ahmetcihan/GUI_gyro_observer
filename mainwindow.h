@@ -68,16 +68,12 @@ public:
         QCustomPlot *customPlot_mag;
         QCustomPlot *customPlot_lpf_gyro;
         QCustomPlot *customPlot_hpf_gyro;
-        QCustomPlot *customPlot_gyro_dps;
         QCustomPlot *customPlot_gyro_angle;
         int GYRO;
         int ACC;
         int MAG;
-        double dps_gyro;
         double dps_angle;
         double running_average_array[64];
-        int offset;
-        bool offset_status;
         struct _filter lpf,hpf;
     };
     _axes X,Y,Z;
@@ -85,9 +81,6 @@ public:
 public slots:
     void serial_request_sender(void);
     void serial_response_handler(void);
-    void take_offset_gyro_x(void);
-    void take_offset_gyro_y(void);
-    void take_offset_gyro_z(void);
 
 private:
     void closeEvent(QCloseEvent *event);

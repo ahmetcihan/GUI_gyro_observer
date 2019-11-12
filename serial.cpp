@@ -91,29 +91,6 @@ void MainWindow::serial_response_handler(void){
                 Z.GYRO = Z.GYRO - 0xFFFF + 1;
             }
 
-            X.dps_gyro = (double)((double) (X.GYRO - X.offset) * 8.75)/1000; // mdps/digit
-            Y.dps_gyro = (double)((double) (Y.GYRO - Y.offset) * 8.75)/1000;
-            Z.dps_gyro = (double)((double) (Z.GYRO - Z.offset) * 8.75)/1000;
-
-            if(X.offset_status == true){
-                X.dps_angle = X.dps_angle + X.dps_gyro;
-            }
-            else{
-                X.dps_angle = 0;
-            }
-            if(Y.offset_status == true){
-                Y.dps_angle = Y.dps_angle + Y.dps_gyro;
-            }
-            else{
-                Y.dps_angle = 0;
-            }
-            if(Z.offset_status == true){
-                Z.dps_angle = Z.dps_angle + Z.dps_gyro;
-            }
-            else{
-                Z.dps_angle = 0;
-            }
-
             X.lpf.GYRO = lpf_x(X.GYRO, X.lpf.a, X.lpf.b, X.lpf.x, X.lpf.y);
             Y.lpf.GYRO = lpf_y(Y.GYRO, Y.lpf.a, Y.lpf.b, Y.lpf.x, Y.lpf.y);
             Z.lpf.GYRO = lpf_z(Z.GYRO, Z.lpf.a, Z.lpf.b, Z.lpf.x, Z.lpf.y);
@@ -157,10 +134,6 @@ void MainWindow::serial_response_handler(void){
             ui->label_hpf_gyro_y->setText("HPF GYRO Y : " + QString::number(Y.hpf.GYRO));
             ui->label_hpf_gyro_z->setText("HPF GYRO Z : " + QString::number(Z.hpf.GYRO));
 
-            ui->label_gyro_dps_x->setText("DPS X : " + QString::number(X.dps_gyro));
-            ui->label_gyro_dps_y->setText("DPS Y : " + QString::number(Y.dps_gyro));
-            ui->label_gyro_dps_z->setText("DPS Z : " + QString::number(Z.dps_gyro));
-
             plot_graph();
         }
     }
@@ -168,8 +141,6 @@ void MainWindow::serial_response_handler(void){
         missed++;
         qDebug() << "CRC missed!!" << missed;
     }
-
-
 }
 void MainWindow::EOL(char *base_array, u8 i){
     base_array[i] 	= 0x0D;
