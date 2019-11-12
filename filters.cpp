@@ -1,53 +1,53 @@
 #include "mainwindow.h"
 
-void MainWindow::butterworth_lpf_coeffs(double *by_1,double *by_0,double *ax_0,double *ax_1,double *ax_2){
-    double samplerate = 200;
-    double cutoff = 1;
-    double w_d  = (2.0 * M_PI * cutoff)/(samplerate);
-    double alpha = qTan(w_d/2);
-    double k = (alpha*alpha) / (1.0 + M_SQRT2*alpha + alpha*alpha);
+void MainWindow::butterworth_lpf_coeffs(double *a, double *b){
+    double OmegaC = 0.1;
+    double A = 1, B = M_SQRT2, C = 1, D = 0, E = 0, F = 1, T, Arg;
 
-    *by_1 = 2.0;
-    *by_0 = 1.0;
-    *ax_0 = k;
-    *ax_1 = 2.0 * k - 2*k/(alpha*alpha);
-    *ax_2 = (1.0 - M_SQRT2*alpha + alpha*alpha)/(1.0 + M_SQRT2*alpha + alpha*alpha);
+    T = 2.0 * qTan(OmegaC * M_PI_2);
+
+    Arg = (4.0*A + 2.0*B*T + C*T*T);
+    a[2] = (4.0*A - 2.0*B*T + C*T*T) / Arg;
+    a[1] = (2.0*C*T*T - 8.0*A) / Arg;
+    a[0] = 1.0;
+
+    // With all pole filters, our LPF numerator is (z+1)^2, so all our Z Plane zeros are at -1
+    b[2] = (4.0*D - 2.0*E*T + F*T*T) / Arg * C/F;
+    b[1] = (2.0*F*T*T - 8.0*D) / Arg * C/F;
+    b[0] = (4*D + F*T*T + 2.0*E*T) / Arg * C/F;
+
 }
-double MainWindow::butterworth_lpf(double input,double by_1,double by_0,double ax_0,double ax_1,double ax_2,double xv[3],double yv[3]){
+void MainWindow::butterworth_hpf_coeffs(double *a, double *b){
+    double OmegaC = 0.1;
+    double A = 1, B = M_SQRT2, C = 1, D = 0, E = 0, F = 1, T, Arg;
 
-    xv[2] = xv[1];
-    xv[1] = xv[0];
-    xv[0] = input;
-    yv[2] = yv[1];
-    yv[1] = yv[0];
-    yv[0] =  ax_0*(xv[0] + by_0*xv[1] + by_1*xv[2]) - (ax_1*yv[1] + ax_2*yv[2]);
+    T = 2.0 * qTan(OmegaC * M_PI_2);
 
-    return yv[0];
+    Arg = A*T*T + 4.0*C + 2.0*B*T;
+    a[2] = (A*T*T + 4.0*C - 2.0*B*T) / Arg;
+    a[1] = (2.0*A*T*T - 8.0*C) / Arg;
+    a[0] = 1.0;
+
+    // With all pole filters, our HPF numerator is (z-1)^2, so all our Z Plane zeros are at 1
+    b[2] = (D*T*T - 2.0*E*T + 4.0*F) / Arg * C/F;
+    b[1] = (2.0*D*T*T - 8.0*F) / Arg * C/F;
+    b[0] = (D*T*T + 4.0*F + 2.0*E*T) / Arg * C/F;
+
 }
-void MainWindow::butterworth_hpf_coeffs(double *by_1,double *by_0,double *ax_0,double *ax_1,double *ax_2){
-    double samplerate = 200;
-    double cutoff = 1;
-    double w_d  = (M_PI * cutoff)/(samplerate);
-    double alpha = qTan(w_d/2);
-    double k = (alpha*alpha) / (1.0 + M_SQRT2*alpha + alpha*alpha);
+double MainWindow::butterworth_filter(double input, double *a, double *b, double *x, double *y){
+    double output, CenterTap;
 
-    *by_1 = 2.0;
-    *by_0 = -1.0;
-    *ax_0 = k;
-    *ax_1 = -2.0 * k + 2*k/(alpha*alpha);
-    *ax_2 = (1.0 - M_SQRT2*alpha + alpha*alpha)/(1.0 + M_SQRT2*alpha + alpha*alpha);
+    CenterTap = input * b[0] + b[1] * x[0] + b[2] * x[1];
+    output = a[0] * CenterTap - a[1] * y[0] - a[2] * y[1];
+
+    x[1] = x[0];
+    x[0] = input;
+    y[1] = y[0];
+    y[0] = output;
+
+    return output;
 }
-double MainWindow::butterworth_hpf(double input,double by_1,double by_0,double ax_0,double ax_1,double ax_2,double xv[3],double yv[3]){
 
-    xv[2] = xv[1];
-    xv[1] = xv[0];
-    xv[0] = input;
-    yv[2] = yv[1];
-    yv[1] = yv[0];
-    yv[0] =  ax_0*(xv[0] + by_0*xv[1] + by_1*xv[2]) - (ax_1*yv[1] + ax_2*yv[2]);
-
-    return yv[0];
-}
 double MainWindow::classic_MA(double raw_signal,u8 filter_coefficient, double running_average[64]){
     double processed_value;
     u8 j;

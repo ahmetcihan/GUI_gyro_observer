@@ -30,13 +30,13 @@ MainWindow::MainWindow(QWidget *parent) :
         X.running_average_array[i] = 0;
         Y.running_average_array[i] = 0;
         Z.running_average_array[i] = 0;
-        if(i < 3){
-            X.lpf.xv[i] = 0;
-            Y.lpf.xv[i] = 0;
-            Z.lpf.xv[i] = 0;
-            X.lpf.yv[i] = 0;
-            Y.lpf.yv[i] = 0;
-            Z.lpf.yv[i] = 0;
+        if(i < 2){
+            X.lpf.x[i] = 0;
+            Y.lpf.x[i] = 0;
+            Z.lpf.x[i] = 0;
+            X.lpf.y[i] = 0;
+            Y.lpf.y[i] = 0;
+            Z.lpf.y[i] = 0;
         }
     }
 
@@ -44,21 +44,20 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this->ui->pushButton_offset_gyro_y,SIGNAL(clicked()),this,SLOT(take_offset_gyro_y()));
     connect(this->ui->pushButton_offset_gyro_z,SIGNAL(clicked()),this,SLOT(take_offset_gyro_z()));
 
-    butterworth_lpf_coeffs(&X.lpf.ax_0, &X.lpf.ax_1, &X.lpf.by_0, &X.lpf.by_1, &X.lpf.by_2);
-    butterworth_lpf_coeffs(&Y.lpf.ax_0, &Y.lpf.ax_1, &Y.lpf.by_0, &Y.lpf.by_1, &Y.lpf.by_2);
-    butterworth_lpf_coeffs(&Z.lpf.ax_0, &Z.lpf.ax_1, &Z.lpf.by_0, &Z.lpf.by_1, &Z.lpf.by_2);
+    butterworth_lpf_coeffs(X.lpf.a, X.lpf.b);
+    butterworth_lpf_coeffs(Y.lpf.a, Y.lpf.b);
+    butterworth_lpf_coeffs(Z.lpf.a, Z.lpf.b);
+    butterworth_hpf_coeffs(X.hpf.a, X.hpf.b);
+    butterworth_hpf_coeffs(Y.hpf.a, Y.hpf.b);
+    butterworth_hpf_coeffs(Z.hpf.a, Z.hpf.b);
 
-    lpf_x = &butterworth_lpf;
-    lpf_y = &butterworth_lpf;
-    lpf_z = &butterworth_lpf;
 
-    butterworth_hpf_coeffs(&X.hpf.ax_0, &X.hpf.ax_1, &X.hpf.by_0, &X.hpf.by_1, &X.hpf.by_2);
-    butterworth_hpf_coeffs(&Y.hpf.ax_0, &Y.hpf.ax_1, &Y.hpf.by_0, &Y.hpf.by_1, &Y.hpf.by_2);
-    butterworth_hpf_coeffs(&Z.hpf.ax_0, &Z.hpf.ax_1, &Z.hpf.by_0, &Z.hpf.by_1, &Z.hpf.by_2);
-
-    hpf_x = &butterworth_hpf;
-    hpf_y = &butterworth_hpf;
-    hpf_z = &butterworth_hpf;
+    lpf_x = &butterworth_filter;
+    lpf_y = &butterworth_filter;
+    lpf_z = &butterworth_filter;
+    hpf_x = &butterworth_filter;
+    hpf_y = &butterworth_filter;
+    hpf_z = &butterworth_filter;
 
     classic_MA_x = &classic_MA;
     classic_MA_y = &classic_MA;

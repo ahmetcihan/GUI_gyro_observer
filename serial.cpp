@@ -114,12 +114,12 @@ void MainWindow::serial_response_handler(void){
                 Z.dps_angle = 0;
             }
 
-            X.lpf.GYRO = lpf_x(X.GYRO, X.lpf.ax_0, X.lpf.ax_1, X.lpf.by_0, X.lpf.by_1, X.lpf.by_2,X.lpf.xv,X.lpf.yv);
-            Y.lpf.GYRO = lpf_y(Y.GYRO, Y.lpf.ax_0, Y.lpf.ax_1, Y.lpf.by_0, Y.lpf.by_1, Y.lpf.by_2,Y.lpf.xv,Y.lpf.yv);
-            Z.lpf.GYRO = lpf_z(Z.GYRO, Z.lpf.ax_0, Z.lpf.ax_1, Z.lpf.by_0, Z.lpf.by_1, Z.lpf.by_2,Z.lpf.xv,Z.lpf.yv);
-            X.hpf.GYRO = lpf_x(X.GYRO, X.hpf.ax_0, X.hpf.ax_1, X.hpf.by_0, X.hpf.by_1, X.hpf.by_2,X.hpf.xv,X.hpf.yv);
-            Y.hpf.GYRO = lpf_y(Y.GYRO, Y.hpf.ax_0, Y.hpf.ax_1, Y.hpf.by_0, Y.hpf.by_1, Y.hpf.by_2,Y.hpf.xv,Y.hpf.yv);
-            Z.hpf.GYRO = lpf_z(Z.GYRO, Z.hpf.ax_0, Z.hpf.ax_1, Z.hpf.by_0, Z.hpf.by_1, Z.hpf.by_2,Z.hpf.xv,Z.hpf.yv);
+            X.lpf.GYRO = lpf_x(X.GYRO, X.lpf.a, X.lpf.b, X.lpf.x, X.lpf.y);
+            Y.lpf.GYRO = lpf_y(Y.GYRO, Y.lpf.a, Y.lpf.b, Y.lpf.x, Y.lpf.y);
+            Z.lpf.GYRO = lpf_z(Z.GYRO, Z.lpf.a, Z.lpf.b, Z.lpf.x, Z.lpf.y);
+            X.hpf.GYRO = hpf_x(X.GYRO, X.hpf.a, X.hpf.b, X.hpf.x, X.hpf.y);
+            Y.hpf.GYRO = hpf_y(Y.GYRO, Y.hpf.a, Y.hpf.b, Y.hpf.x, Y.hpf.y);
+            Z.hpf.GYRO = hpf_z(Z.GYRO, Z.hpf.a, Z.hpf.b, Z.hpf.x, Z.hpf.y);
 
             graph_page->calibrated[0] = (double) (X.dps_angle - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
             graph_page->calibrated[1] = (double) (Y.dps_angle - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];

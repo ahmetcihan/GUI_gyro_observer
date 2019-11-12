@@ -35,21 +35,21 @@ public:
     void plot_graph(void);
 
     static double classic_MA(double raw_signal, u8 filter_coefficient, double running_average[]);
-    void butterworth_lpf_coeffs(double *by_1, double *by_0, double *ax_0, double *ax_1, double *ax_2);
-    static double butterworth_lpf(double input,double by_1,double by_0,double ax_0,double ax_1,double ax_2,double xv[3],double yv[3]);
-    void butterworth_hpf_coeffs(double *by_1, double *by_0, double *ax_0, double *ax_1, double *ax_2);
-    static double butterworth_hpf(double input,double by_1,double by_0,double ax_0,double ax_1,double ax_2,double xv[3],double yv[3]);
+
+    void butterworth_lpf_coeffs(double *a, double *b);
+    void butterworth_hpf_coeffs(double *a, double *b);
+    static double butterworth_filter(double input, double *a, double *b, double *x, double *y);
 
     double (*classic_MA_x)(double,u8,double*);
     double (*classic_MA_y)(double,u8,double*);
     double (*classic_MA_z)(double,u8,double*);
 
-    double (*lpf_x)(double ,double ,double ,double ,double ,double,double* ,double*);
-    double (*lpf_y)(double ,double ,double ,double ,double ,double,double* ,double*);
-    double (*lpf_z)(double ,double ,double ,double ,double ,double,double* ,double*);
-    double (*hpf_x)(double ,double ,double ,double ,double ,double,double* ,double*);
-    double (*hpf_y)(double ,double ,double ,double ,double ,double,double* ,double*);
-    double (*hpf_z)(double ,double ,double ,double ,double ,double,double* ,double*);
+    double (*lpf_x)(double ,double* ,double*,double* ,double*);
+    double (*lpf_y)(double ,double* ,double*,double* ,double*);
+    double (*lpf_z)(double ,double* ,double*,double* ,double*);
+    double (*hpf_x)(double ,double* ,double*,double* ,double*);
+    double (*hpf_y)(double ,double* ,double*,double* ,double*);
+    double (*hpf_z)(double ,double* ,double*,double* ,double*);
 
     QSerialPort *serial;
     QTimer *_100_msec_timer;
@@ -58,7 +58,8 @@ public:
 
     struct _filter{
         double GYRO;
-        double ax_0,ax_1,by_0,by_1,by_2,xv[3],yv[3];
+        double a[3],b[3];
+        double x[2],y[2];
     };
 
     struct _axes{
