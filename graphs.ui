@@ -132,7 +132,7 @@ ZERO</string>
     </font>
    </property>
    <property name="decimals">
-    <number>3</number>
+    <number>0</number>
    </property>
    <property name="minimum">
     <double>-999999.000000000000000</double>
@@ -204,7 +204,7 @@ ZERO</string>
     </font>
    </property>
    <property name="decimals">
-    <number>3</number>
+    <number>0</number>
    </property>
    <property name="minimum">
     <double>-999999.000000000000000</double>
@@ -363,7 +363,7 @@ ZERO</string>
     </font>
    </property>
    <property name="decimals">
-    <number>3</number>
+    <number>0</number>
    </property>
    <property name="minimum">
     <double>-999999.000000000000000</double>
@@ -435,7 +435,7 @@ ZERO</string>
     </font>
    </property>
    <property name="decimals">
-    <number>3</number>
+    <number>0</number>
    </property>
    <property name="minimum">
     <double>-999999.000000000000000</double>
@@ -459,7 +459,7 @@ ZERO</string>
     </font>
    </property>
    <property name="decimals">
-    <number>3</number>
+    <number>0</number>
    </property>
    <property name="minimum">
     <double>-999999.000000000000000</double>
@@ -507,7 +507,7 @@ ZERO</string>
     </font>
    </property>
    <property name="decimals">
-    <number>3</number>
+    <number>0</number>
    </property>
    <property name="minimum">
     <double>-999999.000000000000000</double>

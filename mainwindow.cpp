@@ -27,9 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initilize_plot();
 
     for(u8 i = 0; i < 64; i++){
-        X.running_average_array[i] = 0;
-        Y.running_average_array[i] = 0;
-        Z.running_average_array[i] = 0;
+        running_average_array[i] = 0;
         if(i < 2){
             X.lpf.x[i] = 0;
             Y.lpf.x[i] = 0;
@@ -39,6 +37,10 @@ MainWindow::MainWindow(QWidget *parent) :
             Z.lpf.y[i] = 0;
         }
     }
+    X.dps_angle = 0;
+    Y.dps_angle = 0;
+    Z.dps_angle = 0;
+    X.integral = 0;
 
     butterworth_lpf_coeffs(X.lpf.a, X.lpf.b);
     butterworth_lpf_coeffs(Y.lpf.a, Y.lpf.b);
@@ -54,10 +56,9 @@ MainWindow::MainWindow(QWidget *parent) :
     hpf_x = &butterworth_filter;
     hpf_y = &butterworth_filter;
     hpf_z = &butterworth_filter;
-
-    classic_MA_x = &classic_MA;
-    classic_MA_y = &classic_MA;
-    classic_MA_z = &classic_MA;
+    lpf_of_hpf_x = &butterworth_filter;
+    lpf_of_hpf_y = &butterworth_filter;
+    lpf_of_hpf_z = &butterworth_filter;
 }
 void MainWindow::closeEvent(QCloseEvent *event){
     graph_page->close();

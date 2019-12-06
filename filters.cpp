@@ -18,7 +18,7 @@ void MainWindow::butterworth_lpf_coeffs(double *a, double *b){
 
 }
 void MainWindow::butterworth_hpf_coeffs(double *a, double *b){
-    double OmegaC = 0.1;
+    double OmegaC = 0.05;
     double A = 1, B = M_SQRT2, C = 1, D = 0, E = 0, F = 1, T, Arg;
 
     T = 2.0 * qTan(OmegaC * M_PI_2);
@@ -47,18 +47,31 @@ double MainWindow::butterworth_filter(double input, double *a, double *b, double
 
     return output;
 }
-
 double MainWindow::classic_MA(double raw_signal,u8 filter_coefficient, double running_average[64]){
-    double processed_value;
-    u8 j;
+    double processed_value = 0;
+    uint16_t j;
 
-    running_average[filter_coefficient-1] = raw_signal;
-    processed_value = raw_signal;
     for (j = 0; j < (filter_coefficient-1); j++){
-        processed_value += running_average[j];
         running_average[j] = running_average[j+1];
+        processed_value += running_average[j];
     }
+    running_average[filter_coefficient-1] = raw_signal;
+    processed_value += raw_signal;
+
     processed_value = (processed_value)/(filter_coefficient);
+
+    return processed_value;
+}
+double MainWindow::definite_integral(double raw_signal,u8 integral_size, double int_array[400]){
+    double processed_value;
+    uint16_t j;
+
+    int_array[integral_size-1] = raw_signal;
+    processed_value = raw_signal;
+    for (j = 0; j < (integral_size-1); j++){
+        processed_value += int_array[j];
+        int_array[j] = int_array[j+1];
+    }
 
     return processed_value;
 }

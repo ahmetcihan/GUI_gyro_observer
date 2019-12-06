@@ -27,6 +27,9 @@ void MainWindow::serial_response_handler(void){
     static u32 missed = 0;
     unsigned char status;
     static QElapsedTimer elaps;
+    static u8 first_in = 1;
+    static u32 counter = 0;
+    static bool in_action = false;
 
 //    qDebug() << "elasp :" << elaps.elapsed();
 //    elaps.restart();
@@ -39,6 +42,16 @@ void MainWindow::serial_response_handler(void){
     crc_low = (fcrc)/256;
     if((crc_high == (u8)data_array[24])&&(crc_low == (u8)data_array[25])){
         if((data_array[0] == 'G') && (data_array[1] == 'Y') && (data_array[2] == 'R')){
+
+            counter++;
+            if(first_in == 1){ //for filter stability at the opening
+                if(counter > 100){
+                    if(fabs(X.average - X.lpf.GYRO) < 10){
+                        first_in = 0;
+                    }
+                }
+            }
+
             X.GYRO = (u8)data_array[3] + 256*(u8)data_array[4];
             Y.GYRO = (u8)data_array[5] + 256*(u8)data_array[6];
             Z.GYRO = (u8)data_array[7] + 256*(u8)data_array[8];
@@ -51,11 +64,11 @@ void MainWindow::serial_response_handler(void){
             Z.MAG = (u8)data_array[21] + 256*(u8)data_array[22];
             status = (u8)data_array[9];
 //            qDebug() << "GYRO status :" << QString::number((u8)data_array[9],2) << "ACC status :" << QString::number((u8)data_array[16],2)<< "MAG status :" << QString::number((u8)data_array[23],2);
-            //qDebug() << "GYRO status :" << QString::number((u8)data_array[9],2);
-            if(((u8)data_array[9] & 0xF) == 0xF){
-                qDebug() << "elasp :" << elaps.elapsed();
-                elaps.restart();
-            }
+//            qDebug() << "GYRO status :" << QString::number((u8)data_array[9],2);
+//            if(((u8)data_array[9] & 0xF) == 0xF){
+//                qDebug() << "elasp :" << elaps.elapsed();
+//                elaps.restart();
+//            }
 //            if((u8) data_array[23] == 0 ){
 //                qDebug() << "MAG status : 0";
 //            }
@@ -97,6 +110,33 @@ void MainWindow::serial_response_handler(void){
             X.hpf.GYRO = hpf_x(X.GYRO, X.hpf.a, X.hpf.b, X.hpf.x, X.hpf.y);
             Y.hpf.GYRO = hpf_y(Y.GYRO, Y.hpf.a, Y.hpf.b, Y.hpf.x, Y.hpf.y);
             Z.hpf.GYRO = hpf_z(Z.GYRO, Z.hpf.a, Z.hpf.b, Z.hpf.x, Z.hpf.y);
+            X.lpf_of_hpf.GYRO = lpf_of_hpf_x(X.hpf.GYRO, X.lpf.a, X.lpf.b, X.lpf_of_hpf.x, X.lpf_of_hpf.y);
+            Y.lpf_of_hpf.GYRO = lpf_of_hpf_y(Y.hpf.GYRO, Y.lpf.a, Y.lpf.b, Y.lpf_of_hpf.x, Y.lpf_of_hpf.y);
+            Z.lpf_of_hpf.GYRO = lpf_of_hpf_z(Z.hpf.GYRO, Z.lpf.a, Z.lpf.b, Z.lpf_of_hpf.x, Z.lpf_of_hpf.y);
+
+            if(fabs(X.hpf.GYRO) < 100){  //this detects the base plane of gyro signal
+                X.average = classic_MA(X.lpf.GYRO,200,running_average_array);
+                ui->label_activation->setText("PASSIVE");
+                ui->label_activation->setStyleSheet("background-color:blue");
+                in_action = false;
+            }
+            else{                       // do nothing
+                ui->label_activation->setText("ACTIVE");
+                ui->label_activation->setStyleSheet("background-color:red");
+                in_action = true;
+            }
+
+            if(first_in == 0){
+                X.dps_angle = X.dps_angle + (X.lpf.GYRO - X.average);
+                if(in_action == true){
+                    X.integral = definite_integral((X.lpf.GYRO - X.average),100,definite_integral_array);
+                }
+            }
+            else{
+                X.dps_angle = 0;
+                X.integral = 0;
+            }
+
 
             graph_page->calibrated[0] = (double) (X.dps_angle - graph_page->ui->doubleSpinBox_gyro_x_zero->value()) * graph_page->slope[0];
             graph_page->calibrated[1] = (double) (Y.dps_angle - graph_page->ui->doubleSpinBox_gyro_y_zero->value()) * graph_page->slope[1];
@@ -133,6 +173,13 @@ void MainWindow::serial_response_handler(void){
             ui->label_hpf_gyro_x->setText("HPF GYRO X : " + QString::number(X.hpf.GYRO));
             ui->label_hpf_gyro_y->setText("HPF GYRO Y : " + QString::number(Y.hpf.GYRO));
             ui->label_hpf_gyro_z->setText("HPF GYRO Z : " + QString::number(Z.hpf.GYRO));
+            ui->label_gyro_angle_x->setText("INT(0-inf) X " + QString::number(X.dps_angle));
+            ui->label_gyro_angle_y->setText("INTEGRAL Y " + QString::number(Y.dps_angle));
+            ui->label_gyro_angle_z->setText("INTEGRAL Z " + QString::number(Z.dps_angle));
+            ui->label_cal_gyro_x->setText("CAL X : " + QString::number(graph_page->calibrated[0]));
+            ui->label_cal_gyro_y->setText("CAL Y : " + QString::number(graph_page->calibrated[1]));
+            ui->label_cal_gyro_z->setText("CAL Z : " + QString::number(graph_page->calibrated[2]));
+            ui->label_gyro_integral_x->setText("INT(x1-x2) X " + QString::number(X.integral));
 
             plot_graph();
         }
